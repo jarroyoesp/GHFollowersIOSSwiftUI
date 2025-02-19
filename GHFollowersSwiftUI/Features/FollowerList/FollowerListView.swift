@@ -28,6 +28,11 @@ struct FollowerListView: View {
                             .font(.caption)
                     }
                     .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray))
+                    .onAppear {
+                        if follower == viewModel.state.followerList.last {
+                            viewModel.send(event: .OnLoadMoreItems)
+                        }
+                    }
                 }
             }
             .padding()

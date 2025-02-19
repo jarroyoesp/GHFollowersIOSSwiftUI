@@ -12,6 +12,7 @@ import Foundation
 enum FollowerListEvent: ViewEvent {
     case OnViewDidLoad(username: String)
     case onUserNameChanged(username: String)
+    case OnLoadMoreItems
     case OnLoginButtonClicked
 }
 
