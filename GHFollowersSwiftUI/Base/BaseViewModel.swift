@@ -9,24 +9,25 @@ import Combine
 import Foundation
 import SwiftUI
 
-// Protocolos que representan los tipos genéricos
-protocol ViewEvent {}
-protocol ViewState {}
-protocol ViewEffect {}
+public protocol ViewEvent {}
+public protocol ViewState {}
+public protocol ViewEffect {}
 
-class BaseViewModel<UiEvent: ViewEvent, UiState: ViewState, UiEffect: ViewEffect>: ObservableObject {
-    @Published var state: UiState
-    @Published var effect: UiEffect?
+open class BaseViewModel<UiEvent: ViewEvent, UiState: ViewState, UiEffect: ViewEffect>: ObservableObject {
+    @Published public var state: UiState
+    @Published public var effect: UiEffect?
 
-    @State var path = NavigationPath()
+    @Published public var navigationPath = NavigationPath()
 
-    private var cancellables = Set<AnyCancellable>()
-
-    init(initialState: UiState) {
+    public init(initialState: UiState) {
         state = initialState
     }
 
-    func send(event _: UiEvent) {
+    open func send(event _: UiEvent) {
         fatalError("Subclasses must implement send(event:)")
+    }
+
+    open func onUiEvent(event: UiEvent) {
+        send(event: event)
     }
 }

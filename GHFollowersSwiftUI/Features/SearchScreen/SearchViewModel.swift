@@ -9,15 +9,15 @@ import Foundation
 
 class SearchViewModel: BaseViewModel<SearchEvent, SearchState, SearchEffect> {
     init() {
-        super.init(initialState: SearchState(isLoading: false, isAuthenticated: false))
+        super.init(initialState: SearchState())
     }
 
     override func send(event: SearchEvent) {
         switch event {
-        case .OnLoginButtonClicked:
-            effect = .showError("Invalid credentials")
-        case let .onUserNameChanged(username: username):
-            state.username = username
+            case .OnSearchButtonClicked:
+                navigationPath.append(FollowerListRoute(username: state.username))
+            case .onUserNameChanged(username: let username):
+                state.username = username
         }
     }
 }

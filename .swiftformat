@@ -1,0 +1,5 @@
+--anonymousforeach ignore
+--indentcase true
+--patternlet inline
+--voidtype tuple
+--xcodeindentation enabled

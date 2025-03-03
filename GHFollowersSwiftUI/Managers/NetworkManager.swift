@@ -14,7 +14,7 @@ class NetworkManager {
     let pageSize = 30
     private init() {}
 
-    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GHError>) -> Void) {
+    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GHError>) -> ()) {
         let endpoint = baseUrl + "\(username)/followers?perpage=\(pageSize)&page=\(page)"
         guard let url = URL(string: endpoint) else {
             completed(Result.failure(.invalidUserName))
@@ -49,7 +49,7 @@ class NetworkManager {
         task.resume()
     }
 
-    func getUserInfo(for username: String, completed: @escaping (Result<User, GHError>) -> Void) {
+    func getUserInfo(for username: String, completed: @escaping (Result<User, GHError>) -> ()) {
         let endpoint = baseUrl + "\(username)"
         guard let url = URL(string: endpoint) else {
             completed(Result.failure(.invalidUserName))

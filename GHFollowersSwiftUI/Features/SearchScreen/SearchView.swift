@@ -11,7 +11,27 @@ struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.navigationPath) {
+            SearchViewMain(state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) })
+                .navigationDestination(for: FollowerListRoute.self) { route in
+                    FollowerListView(userName: route.username)
+                }
+        }
+        .onReceive(viewModel.$effect) { effect in
+            guard let effect = effect else { return }
+            switch effect {
+                case .showError(let message): print(message)
+            }
+        }
+    }
+}
+
+private struct SearchViewMain: View {
+    let state: SearchState
+    var sendEvent: (_ event: SearchEvent) -> ()
+
+    var body: some View {
+        VStack {
             Image("gh-logo")
                 .resizable()
                 .scaledToFit()
@@ -19,26 +39,24 @@ struct SearchView: View {
                 .foregroundStyle(.tint)
 
             TextField("Username", text: Binding(
-                get: { viewModel.state.username },
-                set: { viewModel.send(event: SearchEvent.onUserNameChanged(username: $0)) }
+                get: { state.username },
+                set: { sendEvent(SearchEvent.onUserNameChanged(username: $0)) }
             ))
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
-            NavigationLink(
-                "Search",
-                destination: FollowerListView(username: viewModel.state.username)
-            )
-        }
-        .padding()
-        .onReceive(viewModel.$effect) { effect in
-            guard let effect = effect else { return }
-            switch effect {
-            case let .showError(message): print(message)
+
+            Button(action: {
+                sendEvent(SearchEvent.OnSearchButtonClicked)
+            }) {
+                Text("Search")
             }
         }
+        .padding()
     }
 }
 
 #Preview {
-    SearchView()
+    SearchViewMain(
+        state: SearchState(username: "user"), sendEvent: { _ in }
+    )
 }

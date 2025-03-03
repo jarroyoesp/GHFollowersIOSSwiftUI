@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct FollowerListView: View {
-    let username: String
-    @StateObject private var viewModel = FollowerListViewModel()
+    @StateObject private var viewModel: FollowerListViewModel
 
-    // Definimos la estructura de las columnas (en este caso 3 columnas)
-    let columns = [
+    init(userName: String) {
+        _viewModel = StateObject(wrappedValue: FollowerListViewModel(username: userName))
+    }
+
+    var body: some View {
+        FollowerListViewMain(
+            state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) }
+        )
+        .navigationTitle("Collection")
+    }
+}
+
+private struct FollowerListViewMain: View {
+    let state: FollowerListState
+    var sendEvent: (_ event: FollowerListEvent) -> ()
+
+    private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -21,52 +35,33 @@ struct FollowerListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(viewModel.state.followerList) { follower in
+                ForEach(state.followerList) { follower in
                     VStack {
-                        ItemView(follower: follower)
-                        Text(follower.login)
-                            .font(.caption)
+                        FollowerItem(follower: follower)
                     }
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray))
                     .onAppear {
-                        if follower == viewModel.state.followerList.last {
-                            viewModel.send(event: .OnLoadMoreItems)
+                        if follower == state.followerList.last {
+                            sendEvent(FollowerListEvent.OnLoadMoreItems)
                         }
                     }
                 }
             }
+            .redacted(reason: state.isLoading ? .placeholder : [])
             .padding()
-        }
-        .navigationTitle("Collection")
-        .onAppear {
-            viewModel.send(event: .OnViewDidLoad(username: username))
         }
     }
 }
 
-struct ItemView: View {
-    let follower: Follower
-    var body: some View {
-        // Aquí asumimos que las imágenes están en el Assets de Xcode
-        AsyncImage(url: URL(string: follower.avatarUrl)) { phase in
-            switch phase {
-            case let .success(image):
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-            case .empty:
-                ProgressView()
-            case .failure:
-                Image(systemName: "photo")
-            @unknown default:
-                Image(systemName: "photo")
-            }
-        }
-        .frame(width: 100, height: 100) // Ajusta el tamaño de la imagen
-    }
+private func getPlaceholderData() -> [Follower] {
+    [
+        Follower(id: 1, login: "Lorem Ipsum", avatarUrl: "url"),
+        Follower(id: 2, login: "Lorem Ipsum", avatarUrl: "url"),
+        Follower(id: 3, login: "Lorem Ipsum", avatarUrl: "url"),
+        Follower(id: 4, login: "Lorem Ipsum", avatarUrl: "url"),
+        Follower(id: 5, login: "Lorem Ipsum", avatarUrl: "url"),
+    ]
 }
 
 #Preview {
-    FollowerListView(username: "user")
+    FollowerListViewMain(state: FollowerListState(followerList: getPlaceholderData()), sendEvent: { _ in })
 }

@@ -10,16 +10,13 @@ import Foundation
 
 // Eventos de la pantalla de Login
 enum FollowerListEvent: ViewEvent {
-    case OnViewDidLoad(username: String)
-    case onUserNameChanged(username: String)
     case OnLoadMoreItems
-    case OnLoginButtonClicked
 }
 
 // Estado de la pantalla de Login
 struct FollowerListState: ViewState {
     var followerList: [Follower] = []
-    var isLoading: Bool
+    var isLoading: Bool = false
     var username: String = ""
 }
 
