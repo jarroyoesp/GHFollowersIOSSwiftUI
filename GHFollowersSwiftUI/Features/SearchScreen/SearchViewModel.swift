@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SearchViewModel: BaseViewModel<SearchEvent, SearchState, SearchEffect> {
     init() {
@@ -15,7 +16,7 @@ class SearchViewModel: BaseViewModel<SearchEvent, SearchState, SearchEffect> {
     override func send(event: SearchEvent) {
         switch event {
             case .OnSearchButtonClicked:
-                navigationPath.append(FollowerListRoute(username: state.username))
+                navigator.navigateTo(AppRoute.followerList(username: state.username))
             case .onUserNameChanged(username: let username):
                 state.username = username
         }

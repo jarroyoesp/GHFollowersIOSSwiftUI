@@ -10,6 +10,8 @@ import SwiftUI
 
 struct FollowerItem: View {
     let follower: Follower
+    let onClick: () -> ()
+
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: follower.avatarUrl)) { phase in
@@ -37,9 +39,12 @@ struct FollowerItem: View {
                 .font(.caption)
         }
         .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray))
+        .onTapGesture {
+            onClick()
+        }
     }
 }
 
 #Preview {
-    FollowerItem(follower: Follower(id: 1, login: "Lorem Ipsum", avatarUrl: "url"))
+    FollowerItem(follower: Follower(id: 1, login: "Lorem Ipsum", avatarUrl: "url"), onClick: {})
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState, FollowerListEffect> {
     private let username: String
@@ -13,7 +14,7 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
 
     init(username: String) {
         self.username = username
-        super.init(initialState: FollowerListState(isLoading: false))
+        super.init(initialState: FollowerListState(username: username))
         refreshData()
     }
 
@@ -21,14 +22,23 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
         switch event {
             case .OnLoadMoreItems:
                 onLoadMoreItems()
+            case .OnItemClicked(username: let username):
+                handleOnItemClicked(username: username)
         }
+    }
+
+    private func handleOnItemClicked(username: String) {
+        print("Navigate to FollowerDetailRoute \(username)")
+        navigator.navigateTo(AppRoute.followerList(username: username))
     }
 
     private func refreshData(page: Int = 1) {
         DispatchQueue.main.async {
+            self.state.showSnackbar = false
             self.state.isLoading = true
         }
         NetworkManager.shared.getFollowers(for: username, page: page) { result in
+            print("Result for \(self.state.username): \n \(result)")
             switch result {
                 case .success(let followers):
                     DispatchQueue.main.async {
@@ -36,6 +46,9 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
                     }
                 case .failure(let error):
                     print(error)
+                    DispatchQueue.main.async {
+                        self.state.showSnackbar = true
+                    }
             }
             DispatchQueue.main.async {
                 self.state.isLoading = false

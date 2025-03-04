@@ -9,13 +9,12 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
+    @StateObject private var navigator = Navigator.shared
 
     var body: some View {
-        NavigationStack(path: $viewModel.navigationPath) {
+        NavigationStack(path: $navigator.navigationPath) {
             SearchViewMain(state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) })
-                .navigationDestination(for: FollowerListRoute.self) { route in
-                    FollowerListView(userName: route.username)
-                }
+                .handleNavigationDestination()
         }
         .onReceive(viewModel.$effect) { effect in
             guard let effect = effect else { return }

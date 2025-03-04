@@ -18,7 +18,21 @@ struct FollowerListView: View {
         FollowerListViewMain(
             state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) }
         )
-        .navigationTitle("Collection")
+        .navigationTitle(viewModel.state.username)
+        .overlay(
+            VStack {
+                if viewModel.state.showSnackbar {
+                    Text("Mensaje de Toast")
+                        .padding()
+                        .background(Color.black.opacity(0.8))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .padding(.bottom, 50)
+                }
+            },
+            alignment: .bottom
+        )
     }
 }
 
@@ -34,20 +48,27 @@ private struct FollowerListViewMain: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(state.followerList) { follower in
-                    VStack {
-                        FollowerItem(follower: follower)
-                    }
-                    .onAppear {
-                        if follower == state.followerList.last {
-                            sendEvent(FollowerListEvent.OnLoadMoreItems)
+            if state.isLoading || !state.followerList.isEmpty {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(state.followerList) { follower in
+                        VStack {
+                            FollowerItem(
+                                follower: follower,
+                                onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) }
+                            )
+                        }
+                        .onAppear {
+                            if follower == state.followerList.last {
+                                sendEvent(FollowerListEvent.OnLoadMoreItems)
+                            }
                         }
                     }
                 }
+                .redacted(reason: state.isLoading ? .placeholder : [])
+                .padding()
+            } else {
+                Text("There is no followers for this user")
             }
-            .redacted(reason: state.isLoading ? .placeholder : [])
-            .padding()
         }
     }
 }
