@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import DesignModule
+import NetworkModule
 
 struct FollowerItem: View {
     let follower: Follower

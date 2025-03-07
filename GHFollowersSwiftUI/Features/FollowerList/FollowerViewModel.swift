@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import DesignModule
+import NetworkModule
 
 class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState, FollowerListEffect> {
     private let username: String

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DesignModule
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
@@ -58,4 +59,15 @@ private struct SearchViewMain: View {
     SearchViewMain(
         state: SearchState(username: "user"), sendEvent: { _ in }
     )
+}
+
+extension View {
+    func handleNavigationDestination() -> some View {
+        navigationDestination(for: AppRoute.self) { route in
+            switch route {
+                case .followerList(let username):
+                    FollowerListView(userName: username)
+            }
+        }
+    }
 }

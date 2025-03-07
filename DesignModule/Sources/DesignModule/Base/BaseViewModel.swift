@@ -17,7 +17,7 @@ open class BaseViewModel<UiEvent: ViewEvent, UiState: ViewState, UiEffect: ViewE
     @Published public var state: UiState
     @Published public var effect: UiEffect?
 
-    @ObservedObject public var navigator = Navigator.shared
+    @Published public var navigator = Navigator.shared
 
     public init(initialState: UiState) {
         state = initialState

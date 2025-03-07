@@ -6,6 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		04204CE42D7B3D5A0016A8B5 /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04204CDA2D7B3D5A0016A8B5 /* NetworkModule.framework */; };
+		046AD8A02D7B4369001EBCE8 /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = 046AD89F2D7B4369001EBCE8 /* NetworkModule */; };
+		046AD8A22D7B4585001EBCE8 /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = 046AD8A12D7B4585001EBCE8 /* NetworkModule */; };
+		046AD8A52D7B47EA001EBCE8 /* DesignModule in Frameworks */ = {isa = PBXBuildFile; productRef = 046AD8A42D7B47EA001EBCE8 /* DesignModule */; };
+		046AD8A72D7B47F1001EBCE8 /* DesignModule in Frameworks */ = {isa = PBXBuildFile; productRef = 046AD8A62D7B47F1001EBCE8 /* DesignModule */; };
+		0485CF312D7B0B4B0003F74F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485CF302D7B0B4B0003F74F /* WidgetKit.framework */; };
+		0485CF332D7B0B4B0003F74F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485CF322D7B0B4B0003F74F /* SwiftUI.framework */; };
+		0485CF442D7B0B4C0003F74F /* Github WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		04029CBD2D65F11F00A04BCA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +32,63 @@
 			remoteGlobalIDString = 04029CAB2D65F11D00A04BCA;
 			remoteInfo = GHFollowersSwiftUI;
 		};
+		04204CE52D7B3D5A0016A8B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04029CA42D65F11D00A04BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04204CD92D7B3D5A0016A8B5;
+			remoteInfo = NetworkModule;
+		};
+		04204CE72D7B3D5A0016A8B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04029CA42D65F11D00A04BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04029CAB2D65F11D00A04BCA;
+			remoteInfo = GHFollowersSwiftUI;
+		};
+		0485CF422D7B0B4C0003F74F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04029CA42D65F11D00A04BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0485CF2D2D7B0B4B0003F74F;
+			remoteInfo = "Github WidgetExtension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0485CF492D7B0B4C0003F74F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0485CF442D7B0B4C0003F74F /* Github WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowersSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04029CBC2D65F11F00A04BCA /* GHFollowersSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHFollowersSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04029CC62D65F11F00A04BCA /* GHFollowersSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHFollowersSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04204CDA2D7B3D5A0016A8B5 /* NetworkModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04204CE32D7B3D5A0016A8B5 /* NetworkModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Github WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0485CF302D7B0B4B0003F74F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0485CF322D7B0B4B0003F74F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0485CF452D7B0B4C0003F74F /* Exceptions for "Github Widget" folder in "Github WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */ = {
@@ -45,6 +106,14 @@
 			path = GHFollowersSwiftUIUITests;
 			sourceTree = "<group>";
 		};
+		0485CF342D7B0B4B0003F74F /* Github Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0485CF452D7B0B4C0003F74F /* Exceptions for "Github Widget" folder in "Github WidgetExtension" target */,
+			);
+			path = "Github Widget";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046AD8A52D7B47EA001EBCE8 /* DesignModule in Frameworks */,
+				046AD8A02D7B4369001EBCE8 /* NetworkModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +140,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04204CD72D7B3D5A0016A8B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04204CE02D7B3D5A0016A8B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04204CE42D7B3D5A0016A8B5 /* NetworkModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0485CF2B2D7B0B4B0003F74F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046AD8A72D7B47F1001EBCE8 /* DesignModule in Frameworks */,
+				0485CF332D7B0B4B0003F74F /* SwiftUI.framework in Frameworks */,
+				0485CF312D7B0B4B0003F74F /* WidgetKit.framework in Frameworks */,
+				046AD8A22D7B4585001EBCE8 /* NetworkModule in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +175,8 @@
 				04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */,
 				04029CBF2D65F11F00A04BCA /* GHFollowersSwiftUITests */,
 				04029CC92D65F11F00A04BCA /* GHFollowersSwiftUIUITests */,
+				0485CF342D7B0B4B0003F74F /* Github Widget */,
+				0485CF2F2D7B0B4B0003F74F /* Frameworks */,
 				04029CAD2D65F11D00A04BCA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,11 +187,33 @@
 				04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */,
 				04029CBC2D65F11F00A04BCA /* GHFollowersSwiftUITests.xctest */,
 				04029CC62D65F11F00A04BCA /* GHFollowersSwiftUIUITests.xctest */,
+				0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */,
+				04204CDA2D7B3D5A0016A8B5 /* NetworkModule.framework */,
+				04204CE32D7B3D5A0016A8B5 /* NetworkModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0485CF2F2D7B0B4B0003F74F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0485CF302D7B0B4B0003F74F /* WidgetKit.framework */,
+				0485CF322D7B0B4B0003F74F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		04204CD52D7B3D5A0016A8B5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */ = {
@@ -102,16 +223,20 @@
 				04029CA82D65F11D00A04BCA /* Sources */,
 				04029CA92D65F11D00A04BCA /* Frameworks */,
 				04029CAA2D65F11D00A04BCA /* Resources */,
+				0485CF492D7B0B4C0003F74F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0485CF432D7B0B4C0003F74F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */,
 			);
 			name = GHFollowersSwiftUI;
 			packageProductDependencies = (
+				046AD89F2D7B4369001EBCE8 /* NetworkModule */,
+				046AD8A42D7B47EA001EBCE8 /* DesignModule */,
 			);
 			productName = GHFollowersSwiftUI;
 			productReference = 04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */;
@@ -163,6 +288,71 @@
 			productReference = 04029CC62D65F11F00A04BCA /* GHFollowersSwiftUIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		04204CD92D7B3D5A0016A8B5 /* NetworkModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04204CF72D7B3D5A0016A8B5 /* Build configuration list for PBXNativeTarget "NetworkModule" */;
+			buildPhases = (
+				04204CD52D7B3D5A0016A8B5 /* Headers */,
+				04204CD62D7B3D5A0016A8B5 /* Sources */,
+				04204CD72D7B3D5A0016A8B5 /* Frameworks */,
+				04204CD82D7B3D5A0016A8B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetworkModule;
+			packageProductDependencies = (
+			);
+			productName = NetworkModule;
+			productReference = 04204CDA2D7B3D5A0016A8B5 /* NetworkModule.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		04204CE22D7B3D5A0016A8B5 /* NetworkModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04204CF82D7B3D5A0016A8B5 /* Build configuration list for PBXNativeTarget "NetworkModuleTests" */;
+			buildPhases = (
+				04204CDF2D7B3D5A0016A8B5 /* Sources */,
+				04204CE02D7B3D5A0016A8B5 /* Frameworks */,
+				04204CE12D7B3D5A0016A8B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04204CE62D7B3D5A0016A8B5 /* PBXTargetDependency */,
+				04204CE82D7B3D5A0016A8B5 /* PBXTargetDependency */,
+			);
+			name = NetworkModuleTests;
+			packageProductDependencies = (
+			);
+			productName = NetworkModuleTests;
+			productReference = 04204CE32D7B3D5A0016A8B5 /* NetworkModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0485CF462D7B0B4C0003F74F /* Build configuration list for PBXNativeTarget "Github WidgetExtension" */;
+			buildPhases = (
+				0485CF2A2D7B0B4B0003F74F /* Sources */,
+				0485CF2B2D7B0B4B0003F74F /* Frameworks */,
+				0485CF2C2D7B0B4B0003F74F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0485CF342D7B0B4B0003F74F /* Github Widget */,
+			);
+			name = "Github WidgetExtension";
+			packageProductDependencies = (
+				046AD8A12D7B4585001EBCE8 /* NetworkModule */,
+				046AD8A62D7B47F1001EBCE8 /* DesignModule */,
+			);
+			productName = "Github WidgetExtension";
+			productReference = 0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +374,16 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 04029CAB2D65F11D00A04BCA;
 					};
+					04204CD92D7B3D5A0016A8B5 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					04204CE22D7B3D5A0016A8B5 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 04029CAB2D65F11D00A04BCA;
+					};
+					0485CF2D2D7B0B4B0003F74F = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = 04029CA72D65F11D00A04BCA /* Build configuration list for PBXProject "GHFollowersSwiftUI" */;
@@ -195,6 +395,10 @@
 			);
 			mainGroup = 04029CA32D65F11D00A04BCA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				04204D022D7B40EF0016A8B5 /* XCLocalSwiftPackageReference "NetworkModule" */,
+				046AD8A32D7B47DD001EBCE8 /* XCLocalSwiftPackageReference "DesignModule" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 04029CAD2D65F11D00A04BCA /* Products */;
 			projectDirPath = "";
@@ -203,6 +407,9 @@
 				04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */,
 				04029CBB2D65F11F00A04BCA /* GHFollowersSwiftUITests */,
 				04029CC52D65F11F00A04BCA /* GHFollowersSwiftUIUITests */,
+				0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */,
+				04204CD92D7B3D5A0016A8B5 /* NetworkModule */,
+				04204CE22D7B3D5A0016A8B5 /* NetworkModuleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +430,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		04029CC42D65F11F00A04BCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04204CD82D7B3D5A0016A8B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04204CE12D7B3D5A0016A8B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0485CF2C2D7B0B4B0003F74F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +481,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04204CD62D7B3D5A0016A8B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04204CDF2D7B3D5A0016A8B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0485CF2A2D7B0B4B0003F74F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +514,21 @@
 			isa = PBXTargetDependency;
 			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
 			targetProxy = 04029CC72D65F11F00A04BCA /* PBXContainerItemProxy */;
+		};
+		04204CE62D7B3D5A0016A8B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04204CD92D7B3D5A0016A8B5 /* NetworkModule */;
+			targetProxy = 04204CE52D7B3D5A0016A8B5 /* PBXContainerItemProxy */;
+		};
+		04204CE82D7B3D5A0016A8B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
+			targetProxy = 04204CE72D7B3D5A0016A8B5 /* PBXContainerItemProxy */;
+		};
+		0485CF432D7B0B4C0003F74F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */;
+			targetProxy = 0485CF422D7B0B4C0003F74F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -321,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -378,7 +642,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -404,6 +668,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +698,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,6 +784,164 @@
 			};
 			name = Release;
 		};
+		04204CF22D7B3D5A0016A8B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 87Z3L86QRD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.NetworkModule;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		04204CF32D7B3D5A0016A8B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 87Z3L86QRD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.NetworkModule;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		04204CF42D7B3D5A0016A8B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 87Z3L86QRD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.NetworkModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GHFollowersSwiftUI";
+			};
+			name = Debug;
+		};
+		04204CF52D7B3D5A0016A8B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 87Z3L86QRD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.NetworkModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GHFollowersSwiftUI";
+			};
+			name = Release;
+		};
+		0485CF472D7B0B4C0003F74F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 87Z3L86QRD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Github Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Github Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jarroyo.ios.GHFollowersSwiftUI.Github-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0485CF482D7B0B4C0003F74F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 87Z3L86QRD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Github Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Github Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jarroyo.ios.GHFollowersSwiftUI.Github-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,7 +981,68 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		04204CF72D7B3D5A0016A8B5 /* Build configuration list for PBXNativeTarget "NetworkModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04204CF22D7B3D5A0016A8B5 /* Debug */,
+				04204CF32D7B3D5A0016A8B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04204CF82D7B3D5A0016A8B5 /* Build configuration list for PBXNativeTarget "NetworkModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04204CF42D7B3D5A0016A8B5 /* Debug */,
+				04204CF52D7B3D5A0016A8B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0485CF462D7B0B4C0003F74F /* Build configuration list for PBXNativeTarget "Github WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0485CF472D7B0B4C0003F74F /* Debug */,
+				0485CF482D7B0B4C0003F74F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		04204D022D7B40EF0016A8B5 /* XCLocalSwiftPackageReference "NetworkModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = NetworkModule;
+		};
+		046AD8A32D7B47DD001EBCE8 /* XCLocalSwiftPackageReference "DesignModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = DesignModule;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		046AD89F2D7B4369001EBCE8 /* NetworkModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04204D022D7B40EF0016A8B5 /* XCLocalSwiftPackageReference "NetworkModule" */;
+			productName = NetworkModule;
+		};
+		046AD8A12D7B4585001EBCE8 /* NetworkModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04204D022D7B40EF0016A8B5 /* XCLocalSwiftPackageReference "NetworkModule" */;
+			productName = NetworkModule;
+		};
+		046AD8A42D7B47EA001EBCE8 /* DesignModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 046AD8A32D7B47DD001EBCE8 /* XCLocalSwiftPackageReference "DesignModule" */;
+			productName = DesignModule;
+		};
+		046AD8A62D7B47F1001EBCE8 /* DesignModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 046AD8A32D7B47DD001EBCE8 /* XCLocalSwiftPackageReference "DesignModule" */;
+			productName = DesignModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04029CA42D65F11D00A04BCA /* Project object */;
 }

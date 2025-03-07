@@ -7,6 +7,8 @@
 
 import Combine
 import Foundation
+import NetworkModule
+import DesignModule
 
 // Eventos de la pantalla de Login
 enum FollowerListEvent: ViewEvent {

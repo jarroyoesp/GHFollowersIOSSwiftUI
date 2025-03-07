@@ -6,10 +6,15 @@
 //
 import SwiftUI
 
-struct UrlImage: View {
+public struct UrlImage: View {
     let url: String
 
-    var body: some View {
+    public init(url: String) {
+        print("\(url)")
+        self.url = url
+    }
+    
+    public var body: some View {
         AsyncImage(url: URL(string: url)) { phase in
             switch phase {
                 case .success(let image):

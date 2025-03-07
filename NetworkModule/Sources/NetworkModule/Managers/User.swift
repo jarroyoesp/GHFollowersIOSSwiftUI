@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct User: Codable {
+public struct User: Codable {
     let login: String
     let avatarUrl: String
     let name: String?

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NetworkModule
 
 struct FollowerListView: View {
     @StateObject private var viewModel: FollowerListViewModel

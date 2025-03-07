@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import DesignModule
 
 class SearchViewModel: BaseViewModel<SearchEvent, SearchState, SearchEffect> {
     init() {

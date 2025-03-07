@@ -8,38 +8,27 @@
 import Foundation
 import SwiftUI
 
-enum AppRoute: Hashable {
+public enum AppRoute: Hashable {
     case followerList(username: String)
 }
 
 open class Navigator: ObservableObject {
-    static let shared = Navigator()
+    nonisolated(unsafe) public static let shared = Navigator()
 
     @Published public var navigationPath = NavigationPath()
 
     private init() {}
 
-    func navigateTo(_ route: AppRoute) {
+    public func navigateTo(_ route: AppRoute) {
         navigationPath.append(route)
     }
 
-    func goBack() {
+    public func goBack() {
         guard !navigationPath.isEmpty else { return }
         navigationPath.removeLast()
     }
 
-    func reset() {
+    public func reset() {
         navigationPath = NavigationPath()
-    }
-}
-
-extension View {
-    func handleNavigationDestination() -> some View {
-        navigationDestination(for: AppRoute.self) { route in
-            switch route {
-                case .followerList(let username):
-                    FollowerListView(userName: username)
-            }
-        }
     }
 }
