@@ -10,12 +10,14 @@ import Foundation
 
 // Eventos de la pantalla de Login
 enum FollowerListEvent: ViewEvent {
+    case OnFavoriteItemClicked(username: String)
     case OnItemClicked(username: String)
     case OnLoadMoreItems
 }
 
 // Estado de la pantalla de Login
 struct FollowerListState: ViewState {
+    var favoriteFollowers: [String: Bool] = [:]
     var followerList: [Follower] = []
     var isLoading: Bool = false
     var showSnackbar: Bool = false

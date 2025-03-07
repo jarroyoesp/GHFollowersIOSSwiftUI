@@ -10,33 +10,27 @@ import SwiftUI
 
 struct FollowerItem: View {
     let follower: Follower
+    let isFavorite: Bool
     let onClick: () -> ()
+    let onClickFavorite: (_ expertId: String) -> ()
 
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: follower.avatarUrl)) { phase in
-                switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                    case .empty:
-                        ProgressView()
-                    case .failure:
-                        Image(systemName: "photo")
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                    @unknown default:
-                        Image(systemName: "photo")
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                }
+            UrlImage(url: follower.avatarUrl)
+            HStack {
+                Text(follower.login)
+                    .lineLimit(1)
+
+                Spacer()
+
+                Image(systemName: isFavorite ? "heart.fill" : "heart")
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        onClickFavorite(follower.login)
+                    }
             }
-            Text(follower.login)
-                .font(.caption)
+            .padding()
+            .frame(maxWidth: .infinity)
         }
         .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray))
         .onTapGesture {
@@ -46,5 +40,5 @@ struct FollowerItem: View {
 }
 
 #Preview {
-    FollowerItem(follower: Follower(id: 1, login: "Lorem Ipsum", avatarUrl: "url"), onClick: {})
+    FollowerItem(follower: Follower(id: 1, login: "Lorem Ipsum", avatarUrl: "url"), isFavorite: false, onClick: {}, onClickFavorite: { _ in })
 }

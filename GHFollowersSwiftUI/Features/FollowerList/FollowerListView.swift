@@ -54,7 +54,9 @@ private struct FollowerListViewMain: View {
                         VStack {
                             FollowerItem(
                                 follower: follower,
-                                onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) }
+                                isFavorite: state.favoriteFollowers[follower.login] == true,
+                                onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) },
+                                onClickFavorite: { sendEvent(FollowerListEvent.OnFavoriteItemClicked(username: $0)) }
                             )
                         }
                         .onAppear {

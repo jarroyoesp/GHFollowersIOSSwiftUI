@@ -20,10 +20,20 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
 
     override func send(event: FollowerListEvent) {
         switch event {
-            case .OnLoadMoreItems:
-                onLoadMoreItems()
+            case .OnFavoriteItemClicked(username: let username):
+                handleOnFavoriteItemClicked(username: username)
             case .OnItemClicked(username: let username):
                 handleOnItemClicked(username: username)
+            case .OnLoadMoreItems:
+                onLoadMoreItems()
+        }
+    }
+
+    private func handleOnFavoriteItemClicked(username: String) {
+        print("OnFavoriteItemClicked \(username)")
+        let isFav = state.favoriteFollowers[username] ?? false
+        DispatchQueue.main.async {
+            self.state.favoriteFollowers[username] = !isFav
         }
     }
 
