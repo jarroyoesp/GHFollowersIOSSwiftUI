@@ -5,9 +5,9 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
+import DesignModule
 import Foundation
 import SwiftUI
-import DesignModule
 
 class SearchViewModel: BaseViewModel<SearchEvent, SearchState, SearchEffect> {
     init() {

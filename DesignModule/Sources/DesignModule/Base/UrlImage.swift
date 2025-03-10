@@ -13,7 +13,7 @@ public struct UrlImage: View {
         print("\(url)")
         self.url = url
     }
-    
+
     public var body: some View {
         AsyncImage(url: URL(string: url)) { phase in
             switch phase {
@@ -23,7 +23,11 @@ public struct UrlImage: View {
                         .scaledToFit()
                         .cornerRadius(10)
                 case .empty:
-                    ProgressView()
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(10)
+                // ProgressView()
                 case .failure:
                     Image(systemName: "photo")
                         .resizable()

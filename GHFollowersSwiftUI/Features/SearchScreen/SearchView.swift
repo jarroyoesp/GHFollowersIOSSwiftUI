@@ -5,8 +5,8 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
-import SwiftUI
 import DesignModule
+import SwiftUI
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()

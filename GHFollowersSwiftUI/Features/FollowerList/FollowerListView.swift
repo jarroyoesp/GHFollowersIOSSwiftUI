@@ -5,8 +5,8 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
-import SwiftUI
 import NetworkModule
+import SwiftUI
 
 struct FollowerListView: View {
     @StateObject private var viewModel: FollowerListViewModel

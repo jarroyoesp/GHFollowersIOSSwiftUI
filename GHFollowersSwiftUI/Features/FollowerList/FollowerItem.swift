@@ -5,10 +5,10 @@
 //  Created by Javier Arroyo on 3/3/25.
 //
 
-import Foundation
-import SwiftUI
 import DesignModule
+import Foundation
 import NetworkModule
+import SwiftUI
 
 struct FollowerItem: View {
     let follower: Follower

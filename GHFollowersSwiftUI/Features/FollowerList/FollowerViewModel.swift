@@ -5,10 +5,10 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
-import Foundation
-import SwiftUI
 import DesignModule
+import Foundation
 import NetworkModule
+import SwiftUI
 
 class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState, FollowerListEffect> {
     private let username: String

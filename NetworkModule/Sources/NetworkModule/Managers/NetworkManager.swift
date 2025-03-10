@@ -8,7 +8,7 @@
 import UIKit
 
 public class NetworkManager {
-    nonisolated(unsafe) public static let shared = NetworkManager()
+    public nonisolated(unsafe) static let shared = NetworkManager()
     private let baseUrl = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>()
     let pageSize = 30

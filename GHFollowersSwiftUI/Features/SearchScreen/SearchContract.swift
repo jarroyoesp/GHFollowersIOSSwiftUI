@@ -6,8 +6,8 @@
 //
 
 import Combine
-import Foundation
 import DesignModule
+import Foundation
 
 // Eventos de la pantalla de Login
 enum SearchEvent: ViewEvent {

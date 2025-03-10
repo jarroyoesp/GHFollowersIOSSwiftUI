@@ -13,7 +13,7 @@ public enum AppRoute: Hashable {
 }
 
 open class Navigator: ObservableObject {
-    nonisolated(unsafe) public static let shared = Navigator()
+    public nonisolated(unsafe) static let shared = Navigator()
 
     @Published public var navigationPath = NavigationPath()
 

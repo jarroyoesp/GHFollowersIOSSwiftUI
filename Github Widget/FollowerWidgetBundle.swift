@@ -1,19 +1,16 @@
 //
-//  Github_WidgetBundle.swift
+//  FollowerWidgetBundle.swift
 //  Github Widget
 //
 //  Created by Javier Arroyo on 7/3/25.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 @main
 struct Github_WidgetBundle: WidgetBundle {
     var body: some Widget {
         FollowerWidget()
-        //Github_Widget()
-        //Github_WidgetControl()
-        //Github_WidgetLiveActivity()
     }
 }
