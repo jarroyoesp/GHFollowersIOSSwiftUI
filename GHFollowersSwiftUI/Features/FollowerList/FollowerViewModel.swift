@@ -30,6 +30,10 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
                 onLoadMoreItems()
         }
     }
+    
+    override func onLoadingChanged(loading: Bool) {
+        self.state.isLoading = loading
+    }
 
     private func handleOnFavoriteItemClicked(username: String) {
         print("OnFavoriteItemClicked \(username)")
@@ -44,25 +48,23 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
     }
 
     private func refreshData(page: Int = 1) {
-        self.state.showSnackbar = false
-        self.state.isLoading = true
-        NetworkManager.shared.getFollowers(for: username, page: page) { result in
-            print("Result for \(self.state.username): \n \(result)")
-            switch result {
-                case .success(let followers):
-                    DispatchQueue.main.async {
-                        self.state.followerList.append(contentsOf: followers)
-                    }
-                case .failure(let error):
-                    print(error)
-                    DispatchQueue.main.async {
-                        self.state.showSnackbar = true
-                        self.state.errorMessage = error.localizedDescription
-                    }
+        load {
+            NetworkManager.shared.getFollowers(for: username, page: page) { result in
+                print("Result for \(self.state.username): \n \(result)")
+                switch result {
+                    case .success(let followers):
+                        DispatchQueue.main.async {
+                            self.state.followerList.append(contentsOf: followers)
+                        }
+                    case .failure(let error):
+                        print(error)
+                        DispatchQueue.main.async {
+                            self.state.showSnackbar = true
+                            self.state.errorMessage = error.localizedDescription
+                        }
+                }
             }
-            DispatchQueue.main.async {
-                self.state.isLoading = false
-            }
+            self.state.showSnackbar = false
         }
     }
 
