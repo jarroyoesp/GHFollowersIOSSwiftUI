@@ -34,9 +34,8 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
     private func handleOnFavoriteItemClicked(username: String) {
         print("OnFavoriteItemClicked \(username)")
         let isFav = state.favoriteFollowers[username] ?? false
-        DispatchQueue.main.async {
-            self.state.favoriteFollowers[username] = !isFav
-        }
+        self.state.favoriteFollowers[username] = !isFav
+    
     }
 
     private func handleOnItemClicked(username: String) {
@@ -45,10 +44,8 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
     }
 
     private func refreshData(page: Int = 1) {
-        DispatchQueue.main.async {
-            self.state.showSnackbar = false
-            self.state.isLoading = true
-        }
+        self.state.showSnackbar = false
+        self.state.isLoading = true
         NetworkManager.shared.getFollowers(for: username, page: page) { result in
             print("Result for \(self.state.username): \n \(result)")
             switch result {
@@ -60,6 +57,7 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
                     print(error)
                     DispatchQueue.main.async {
                         self.state.showSnackbar = true
+                        self.state.errorMessage = error.localizedDescription
                     }
             }
             DispatchQueue.main.async {

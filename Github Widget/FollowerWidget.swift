@@ -29,7 +29,7 @@ struct FollowerWidgetView: View {
 
     var body: some View {
         LazyVStack {
-            FollowerHeaderWidgetView()
+            FollowerHeaderWidgetView(date: entry.date)
             ForEach(entry.followerList.indices, id: \.self) { index in
                 let follower = entry.followerList[index]
                 FollowerItem(follower: follower)
@@ -42,13 +42,31 @@ struct FollowerWidgetView: View {
 }
 
 struct FollowerHeaderWidgetView: View {
+    let date: Date
+    
+
+    
     var body: some View {
         HStack {
-            Text("Last Updates")
+            Text("Last Updates \(date.getTimeString())")
                 .font(.body)
                 .foregroundColor(.blue)
                 .frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: "star")
+                .foregroundColor(.gray)
+                .frame(alignment: .trailing)
         }
+        .frame(maxWidth: .infinity)
+        .padding(.bottom, 4)
+    }
+}
+
+extension Date {
+    func getTimeString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+
+        return formatter.string(from: self)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import NetworkModule
+import DesignModule
 import SwiftUI
 
 struct FollowerListView: View {
@@ -20,19 +21,9 @@ struct FollowerListView: View {
             state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) }
         )
         .navigationTitle(viewModel.state.username)
-        .overlay(
-            VStack {
-                if viewModel.state.showSnackbar {
-                    Text("Mensaje de Toast")
-                        .padding()
-                        .background(Color.black.opacity(0.8))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                        .padding(.bottom, 50)
-                }
-            },
-            alignment: .bottom
+        .snackbar(
+            show: $viewModel.state.showSnackbar,
+            message: viewModel.state.errorMessage
         )
     }
 }

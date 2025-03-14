@@ -10,15 +10,14 @@ import DesignModule
 import Foundation
 import NetworkModule
 
-// Eventos de la pantalla de Login
 enum FollowerListEvent: ViewEvent {
     case OnFavoriteItemClicked(username: String)
     case OnItemClicked(username: String)
     case OnLoadMoreItems
 }
 
-// Estado de la pantalla de Login
 struct FollowerListState: ViewState {
+    var errorMessage: String = ""
     var favoriteFollowers: [String: Bool] = [:]
     var followerList: [Follower] = []
     var isLoading: Bool = false
@@ -26,7 +25,6 @@ struct FollowerListState: ViewState {
     var username: String = ""
 }
 
-// Efectos secundarios (como mensajes de error)
 enum FollowerListEffect: ViewEffect {
     case showError(String)
 }
