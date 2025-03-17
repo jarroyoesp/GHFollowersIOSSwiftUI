@@ -24,17 +24,20 @@ struct FollowerWidget: Widget {
     }
 }
 
-struct FollowerWidgetView: View {
+private struct FollowerWidgetView: View {
     var entry: FollowerWidgetData
 
     var body: some View {
-        switch entry.widgetSizeType {
-            case .BIG:
+        switch entry.family {
+            case .systemMedium:
                 FollowerWidgetViewMedium(entry: entry)
-            case .MEDIUM:
+            case .systemLarge:
                 FollowerWidgetViewMedium(entry: entry)
-            case .SMALL:
+            case .systemSmall:
                 FollowerWidgetViewSmall(entry: entry)
+            default:
+                // NOT IMPLEMENTED
+                Text("Not implemented")
         }
     }
 }
