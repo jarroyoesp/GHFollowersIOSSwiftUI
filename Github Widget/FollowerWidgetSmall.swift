@@ -32,7 +32,7 @@ private struct FollowerHeaderWidgetViewSmall: View {
     var body: some View {
         HStack {
             Text("Updates")
-                .font(.body)
+                .font(.headline)
                 .foregroundColor(.blue)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 4)

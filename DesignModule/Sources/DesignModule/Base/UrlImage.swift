@@ -23,10 +23,11 @@ public struct UrlImage: View {
                         .scaledToFit()
                         .cornerRadius(10)
                 case .empty:
-                    Image(systemName: "photo")
+                    Image(systemName: "person.circle.fill")
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(10)
+                        .foregroundStyle(.gray)
                 // ProgressView()
                 case .failure:
                     Image(systemName: "photo")

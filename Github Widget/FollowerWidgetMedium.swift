@@ -25,6 +25,7 @@ struct FollowerWidgetViewMedium: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 
@@ -33,15 +34,15 @@ private struct FollowerHeaderWidgetViewMedium: View {
 
     var body: some View {
         HStack {
-            Text("Last Updates \(date.getTimeString())")
-                .font(.body)
+            Text("Latest Updates \(date.getTimeString())")
+                .font(.headline)
                 .foregroundColor(.blue)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image(systemName: "star")
+            Image(systemName: "bell.fill")
                 .foregroundColor(.gray)
                 .frame(alignment: .trailing)
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .center)
         .padding(.bottom, 4)
     }
 }

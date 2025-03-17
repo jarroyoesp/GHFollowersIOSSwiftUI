@@ -40,30 +40,46 @@ private struct FollowerListViewMain: View {
 
     var body: some View {
         ScrollView {
-            if state.isLoading || !state.followerList.isEmpty {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(state.followerList) { follower in
-                        VStack {
-                            FollowerItem(
-                                follower: follower,
-                                isFavorite: state.favoriteFollowers[follower.login] == true,
-                                onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) },
-                                onClickFavorite: { sendEvent(FollowerListEvent.OnFavoriteItemClicked(username: $0)) }
-                            )
-                        }
-                        .onAppear {
-                            if follower == state.followerList.last {
-                                sendEvent(FollowerListEvent.OnLoadMoreItems)
+            LazyVGrid(columns: columns, spacing: 20) {
+                if state.isLoading && state.followerList.isEmpty {
+                    initialLoadingPlaceholder()
+                } else {
+                    if !state.followerList.isEmpty {
+                        ForEach(state.followerList) { follower in
+                            VStack {
+                                FollowerItem(
+                                    follower: follower,
+                                    isFavorite: state.favoriteFollowers[follower.login] == true,
+                                    onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) },
+                                    onClickFavorite: { sendEvent(FollowerListEvent.OnFavoriteItemClicked(username: $0)) }
+                                )
+                            }
+                            .onAppear {
+                                if follower == state.followerList.last {
+                                    sendEvent(FollowerListEvent.OnLoadMoreItems)
+                                }
                             }
                         }
+                    } else {
+                        Text("There is no followers for this user")
                     }
                 }
-                .redacted(reason: state.isLoading ? .placeholder : [])
-                .padding()
-            } else {
-                Text("There is no followers for this user")
             }
+            .redacted(reason: state.isLoading ? .placeholder : [])
+            .padding()
         }
+    }
+}
+
+@ViewBuilder
+private func initialLoadingPlaceholder() -> some SwiftUI.View {
+    ForEach(0 ..< 20, id: \.self) { _ in
+        FollowerItem(
+            follower: Follower(id: 1, login: "Lorem Ipsum", avatarUrl: "url"),
+            isFavorite: false,
+            onClick: {},
+            onClickFavorite: { _ in }
+        )
     }
 }
 

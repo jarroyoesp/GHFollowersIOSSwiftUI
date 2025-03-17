@@ -18,21 +18,19 @@ struct ApiResponse {
 
 struct FollowerWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> FollowerWidgetData {
-        FollowerWidgetData(date: Date(), widgetSizeType: context.displaySize.getWidgetSizeType(), followerList: [])
+        FollowerWidgetData(date: Date(), family: context.family, followerList: [])
     }
 
     func getSnapshot(in context: Context, completion: @escaping (FollowerWidgetData) -> ()) {
         fetchData { data in
-            let widgetSizeType = context.displaySize.getWidgetSizeType()
-            let entry = FollowerWidgetData(date: Date(), widgetSizeType: widgetSizeType, followerList: widgetSizeType.getFollowerListe(followerList: data ?? []))
+            let entry = FollowerWidgetData(date: Date(), family: context.family, followerList: context.family.getFollowerListe(followerList: data ?? []))
             completion(entry)
         }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<FollowerWidgetData>) -> ()) {
         fetchData { data in
-            let widgetSizeType = context.displaySize.getWidgetSizeType()
-            let entry = FollowerWidgetData(date: Date(), widgetSizeType: context.displaySize.getWidgetSizeType(), followerList: widgetSizeType.getFollowerListe(followerList: data ?? []))
+            let entry = FollowerWidgetData(date: Date(), family: context.family, followerList: context.family.getFollowerListe(followerList: data ?? []))
             let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 1))) // Actualiza cada 1 min
             completion(timeline)
         }

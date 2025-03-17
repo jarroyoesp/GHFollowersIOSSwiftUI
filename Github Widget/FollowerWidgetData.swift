@@ -10,28 +10,10 @@ import NetworkModule
 import SwiftUI
 import WidgetKit
 
-enum WidgetSizeType {
-    case BIG
-    case MEDIUM
-    case SMALL
-}
-
 struct FollowerWidgetData: TimelineEntry {
     var date: Date
-    let widgetSizeType: WidgetSizeType
+    let family: WidgetFamily
     var followerList: [Follower]
-}
-
-extension CGSize {
-    func getWidgetSizeType() -> WidgetSizeType {
-        return if width <= 170 {
-            .SMALL
-        } else if height > 300 {
-            .BIG
-        } else {
-            .MEDIUM
-        }
-    }
 }
 
 extension Date {
@@ -43,15 +25,18 @@ extension Date {
     }
 }
 
-extension WidgetSizeType {
+extension WidgetFamily {
     func getFollowerListe(followerList: [Follower]) -> [Follower] {
         return switch self {
-            case .BIG:
+            case .systemLarge:
                 Array(followerList.prefix(7))
-            case .MEDIUM:
+            case .systemMedium:
                 Array(followerList.prefix(3))
-            case .SMALL:
+            case .systemSmall:
                 Array(followerList.prefix(1))
+            default:
+                // NOT IMPLEMENTED
+                []
         }
     }
 }
