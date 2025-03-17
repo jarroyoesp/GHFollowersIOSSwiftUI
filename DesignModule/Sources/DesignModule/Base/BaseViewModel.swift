@@ -30,9 +30,9 @@ open class BaseViewModel<UiEvent: ViewEvent, UiState: ViewState, UiEffect: ViewE
     open func onUiEvent(event: UiEvent) {
         send(event: event)
     }
-    
-    open func onLoadingChanged(loading: Bool) {}
-    
+
+    open func onLoadingChanged(loading _: Bool) {}
+
     public func load(block: () -> ()) {
         onLoadingChanged(loading: true)
         block()

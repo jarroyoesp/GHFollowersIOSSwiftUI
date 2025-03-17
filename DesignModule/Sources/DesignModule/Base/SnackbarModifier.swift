@@ -7,7 +7,6 @@
 import SwiftUI
 
 public struct SnackbarView: View {
-    
     public init(
         show: Binding<Bool>,
         message: String,
@@ -17,7 +16,7 @@ public struct SnackbarView: View {
         iconColor: Color = .white,
         autoDismiss: Bool = true
     ) {
-        self._show = show
+        _show = show
         self.message = message
         self.bgColor = bgColor
         self.txtColor = txtColor
@@ -25,7 +24,7 @@ public struct SnackbarView: View {
         self.iconColor = iconColor
         self.autoDismiss = autoDismiss
     }
-    
+
     @Binding public var show: Bool
     private var message: String
     private var bgColor: Color
@@ -33,11 +32,11 @@ public struct SnackbarView: View {
     private var icon: String?
     private var iconColor: Color
     private var autoDismiss: Bool
-    
+
     let paddingBottom = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0) + 54
-    
+
     public var body: some View {
-        if self.show {
+        if show {
             VStack {
                 Spacer()
                 HStack(alignment: .center, spacing: 12) {
@@ -48,12 +47,12 @@ public struct SnackbarView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 14, height: 14)
                     }
-                    
+
                     Text(message)
                         .foregroundColor(txtColor)
                         .font(.system(size: 14))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     Image(systemName: "xmark")
                         .foregroundColor(.white)
                         .onTapGesture {
@@ -73,7 +72,7 @@ public struct SnackbarView: View {
             .transition(.move(edge: .bottom))
             .edgesIgnoringSafeArea(.bottom)
             .onAppear {
-                if (autoDismiss) {
+                if autoDismiss {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                         self.show = false
                     }
@@ -83,8 +82,8 @@ public struct SnackbarView: View {
     }
 }
 
-extension View {
-    public func snackbar(
+public extension View {
+    func snackbar(
         show: Binding<Bool>,
         message: String,
         bgColor: Color = .red,
@@ -93,14 +92,14 @@ extension View {
         iconColor: Color = .white,
         autoDismiss: Bool = true
     ) -> some View {
-        self.modifier(
+        modifier(
             SnackbarModifier(
                 show: show,
                 message: message,
                 bgColor: bgColor,
                 txtColor: txtColor,
                 icon: icon,
-                iconColor:iconColor,
+                iconColor: iconColor,
                 autoDismiss: autoDismiss
             )
         )
@@ -115,8 +114,8 @@ public struct SnackbarModifier: ViewModifier {
     var icon: String?
     var iconColor: Color
     var autoDismiss: Bool
-    
-   public func body(content: Content) -> some View {
+
+    public func body(content: Content) -> some View {
         ZStack {
             content
             SnackbarView(show: $show, message: message, bgColor: bgColor, txtColor: txtColor, icon: icon, iconColor: iconColor, autoDismiss: autoDismiss)
@@ -124,8 +123,7 @@ public struct SnackbarModifier: ViewModifier {
     }
 }
 
-
-//struct SnackbarModifier: ViewModifier {
+// struct SnackbarModifier: ViewModifier {
 //    @Binding var isVisible: Bool
 //    let message: String
 //
@@ -148,11 +146,11 @@ public struct SnackbarModifier: ViewModifier {
 //        }
 //        .animation(.easeInOut, value: isVisible)
 //    }
-//}
+// }
 //
-//extension View {
+// extension View {
 //    func snackbarOld(isVisible: Binding<Bool>, message: String) -> some View {
 //        modifier(SnackbarModifier(isVisible: isVisible, message: message))
 //    }
-//}
+// }
 //

@@ -30,16 +30,15 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
                 onLoadMoreItems()
         }
     }
-    
+
     override func onLoadingChanged(loading: Bool) {
-        self.state.isLoading = loading
+        state.isLoading = loading
     }
 
     private func handleOnFavoriteItemClicked(username: String) {
         print("OnFavoriteItemClicked \(username)")
         let isFav = state.favoriteFollowers[username] ?? false
-        self.state.favoriteFollowers[username] = !isFav
-    
+        state.favoriteFollowers[username] = !isFav
     }
 
     private func handleOnItemClicked(username: String) {

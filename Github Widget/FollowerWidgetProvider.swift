@@ -17,20 +17,22 @@ struct ApiResponse {
 }
 
 struct FollowerWidgetProvider: TimelineProvider {
-    func placeholder(in _: Context) -> FollowerWidgetData {
-        FollowerWidgetData(date: Date(), followerList: [])
+    func placeholder(in context: Context) -> FollowerWidgetData {
+        FollowerWidgetData(date: Date(), widgetSizeType: context.displaySize.getWidgetSizeType(), followerList: [])
     }
 
-    func getSnapshot(in _: Context, completion: @escaping (FollowerWidgetData) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (FollowerWidgetData) -> ()) {
         fetchData { data in
-            let entry = FollowerWidgetData(date: Date(), followerList: Array((data ?? []).prefix(3)))
+            let widgetSizeType = context.displaySize.getWidgetSizeType()
+            let entry = FollowerWidgetData(date: Date(), widgetSizeType: widgetSizeType, followerList: widgetSizeType.getFollowerListe(followerList: data ?? []))
             completion(entry)
         }
     }
 
-    func getTimeline(in _: Context, completion: @escaping (Timeline<FollowerWidgetData>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<FollowerWidgetData>) -> ()) {
         fetchData { data in
-            let entry = FollowerWidgetData(date: Date(), followerList: Array((data ?? []).prefix(3)))
+            let widgetSizeType = context.displaySize.getWidgetSizeType()
+            let entry = FollowerWidgetData(date: Date(), widgetSizeType: context.displaySize.getWidgetSizeType(), followerList: widgetSizeType.getFollowerListe(followerList: data ?? []))
             let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 1))) // Actualiza cada 1 min
             completion(timeline)
         }

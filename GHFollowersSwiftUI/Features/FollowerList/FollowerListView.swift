@@ -5,8 +5,8 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
-import NetworkModule
 import DesignModule
+import NetworkModule
 import SwiftUI
 
 struct FollowerListView: View {
