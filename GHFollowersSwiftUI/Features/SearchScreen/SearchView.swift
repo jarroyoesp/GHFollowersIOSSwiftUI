@@ -33,7 +33,7 @@ struct SearchView: View {
 
 private struct SearchViewMain: View {
     let state: SearchState
-    var sendEvent: (_ event: SearchEvent) -> ()
+    let sendEvent: (_ event: SearchEvent) -> ()
 
     var body: some View {
         VStack {

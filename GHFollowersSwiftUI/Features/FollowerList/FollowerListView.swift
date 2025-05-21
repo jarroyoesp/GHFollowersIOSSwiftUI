@@ -35,7 +35,7 @@ struct FollowerListView: View {
 
 private struct FollowerListViewMain: View {
     let state: FollowerListState
-    var sendEvent: (_ event: FollowerListEvent) -> ()
+    let sendEvent: (_ event: FollowerListEvent) -> ()
 
     private let columns = [
         GridItem(.flexible()),
