@@ -12,8 +12,8 @@ import SwiftUI
 struct FollowerListView: View {
     @StateObject private var viewModel: FollowerListViewModel
 
-    init(userName: String) {
-        _viewModel = StateObject(wrappedValue: FollowerListViewModel(username: userName))
+    init(userName: String, callbackId: UUID) {
+        _viewModel = StateObject(wrappedValue: FollowerListViewModel(username: userName, callbackId: callbackId))
     }
 
     var body: some View {
@@ -24,6 +24,11 @@ struct FollowerListView: View {
         .snackbar(
             show: $viewModel.state.showSnackbar,
             message: viewModel.state.errorMessage
+        )
+        .snackbar(
+            show: $viewModel.state.showResult,
+            message: viewModel.state.resultMessage,
+            bgColor: .green
         )
     }
 }
@@ -39,34 +44,47 @@ private struct FollowerListViewMain: View {
     ]
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                if state.isLoading && state.followerList.isEmpty {
-                    initialLoadingPlaceholder()
-                } else {
-                    if !state.followerList.isEmpty {
-                        ForEach(state.followerList) { follower in
-                            VStack {
+        VStack {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    if state.isLoading && state.followerList.isEmpty {
+                        initialLoadingPlaceholder()
+                    } else {
+                        if !state.followerList.isEmpty {
+                            ForEach(state.followerList) { follower in
                                 FollowerItem(
                                     follower: follower,
                                     isFavorite: state.favoriteFollowers[follower.login] == true,
                                     onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) },
                                     onClickFavorite: { sendEvent(FollowerListEvent.OnFavoriteItemClicked(username: $0)) }
                                 )
-                            }
-                            .onAppear {
-                                if follower == state.followerList.last {
-                                    sendEvent(FollowerListEvent.OnLoadMoreItems)
+                                .onAppear {
+                                    if follower == state.followerList.last {
+                                        sendEvent(FollowerListEvent.OnLoadMoreItems)
+                                    }
                                 }
                             }
                         }
-                    } else {
-                        Text("There is no followers for this user")
                     }
                 }
+                .redacted(reason: state.isLoading ? .placeholder : [])
+                .padding()
+
+                if !state.isLoading && state.followerList.isEmpty {
+                    Text("There is no followers for this user")
+                }
             }
-            .redacted(reason: state.isLoading ? .placeholder : [])
-            .padding()
+            Button(action: {
+                sendEvent(FollowerListEvent.SendResultAndNavigateBack)
+            }) {
+                Text("Send Result Back")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+            }
         }
     }
 }

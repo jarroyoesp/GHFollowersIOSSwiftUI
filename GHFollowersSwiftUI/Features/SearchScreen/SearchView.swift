@@ -16,6 +16,11 @@ struct SearchView: View {
         NavigationStack(path: $navigator.navigationPath) {
             SearchViewMain(state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) })
                 .handleNavigationDestination()
+                .snackbar(
+                    show: $viewModel.state.showResult,
+                    message: viewModel.state.resultMessage,
+                    bgColor: .green
+                )
         }
         .onReceive(viewModel.$effect) { effect in
             guard let effect = effect else { return }
@@ -65,8 +70,8 @@ extension View {
     func handleNavigationDestination() -> some View {
         navigationDestination(for: AppRoute.self) { route in
             switch route {
-                case .followerList(let username):
-                    FollowerListView(userName: username)
+                case .followerList(let username, let callbackId):
+                    FollowerListView(userName: username, callbackId: callbackId)
             }
         }
     }

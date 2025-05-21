@@ -17,6 +17,8 @@ enum SearchEvent: ViewEvent {
 struct SearchState: ViewState {
     var isLoading: Bool = false
     var username: String = ""
+    var resultMessage: String = ""
+    var showResult: Bool = false
 }
 
 enum SearchEffect: ViewEffect {

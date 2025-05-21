@@ -14,6 +14,7 @@ enum FollowerListEvent: ViewEvent {
     case OnFavoriteItemClicked(username: String)
     case OnItemClicked(username: String)
     case OnLoadMoreItems
+    case SendResultAndNavigateBack
 }
 
 struct FollowerListState: ViewState {
@@ -23,6 +24,8 @@ struct FollowerListState: ViewState {
     var isLoading: Bool = false
     var showSnackbar: Bool = false
     var username: String = ""
+    var resultMessage: String = ""
+    var showResult: Bool = false
 }
 
 enum FollowerListEffect: ViewEffect {

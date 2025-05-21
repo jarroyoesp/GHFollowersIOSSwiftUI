@@ -6,15 +6,16 @@
 //
 
 import DesignModule
-import Foundation
 import NetworkModule
 import SwiftUI
 
 class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState, FollowerListEffect> {
     private let username: String
+    private let callbackId: UUID
     private var page = 1
 
-    init(username: String) {
+    init(username: String, callbackId: UUID) {
+        self.callbackId = callbackId
         self.username = username
         super.init(initialState: FollowerListState(username: username))
         refreshData()
@@ -28,6 +29,9 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
                 handleOnItemClicked(username: username)
             case .OnLoadMoreItems:
                 onLoadMoreItems()
+            case .SendResultAndNavigateBack:
+                RouteCallbackRegistry.shared.trigger(id: callbackId, result: FollowerListResult(followerId: username, resultType: FollowerListResult.ResultType.UPDATE))
+                navigator.goBack()
         }
     }
 
@@ -43,7 +47,14 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
 
     private func handleOnItemClicked(username: String) {
         print("Navigate to FollowerDetailRoute \(username)")
-        navigator.navigateTo(AppRoute.followerList(username: username))
+        let callbackId = RouteCallbackRegistry.shared.register { result in
+            if let result = result as? FollowerListResult {
+                self.state.resultMessage = "\(result)"
+                self.state.showResult = true
+            }
+        }
+
+        navigator.navigateTo(AppRoute.followerList(username: username, callbackId: callbackId))
     }
 
     private func refreshData(page: Int = 1) {
