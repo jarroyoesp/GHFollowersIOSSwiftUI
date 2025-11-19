@@ -6,22 +6,33 @@
 //
 
 import DesignModule
+import NavigationModule
 import NetworkModule
 import SwiftUI
+import Swinject
 
-class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState, FollowerListEffect> {
+class FollowerListViewModel: BaseViewModel<FollowerListContract.Event, FollowerListContract.State, FollowerListContract.Effect> {
+    private var appNavigator: AppNavigator?
     private let username: String
     private let callbackId: UUID
+    private let networkManager: NetworkManagerProtocol?
     private var page = 1
 
-    init(username: String, callbackId: UUID) {
+    init(
+        username: String,
+        callbackId: UUID,
+        appNavigator: AppNavigator?,
+        networkManager: NetworkManagerProtocol?
+    ) {
+        self.appNavigator = appNavigator
         self.callbackId = callbackId
         self.username = username
-        super.init(initialState: FollowerListState(username: username))
+        self.networkManager = networkManager
+        super.init(initialState: FollowerListContract.State(username: username))
         refreshData()
     }
 
-    override func send(event: FollowerListEvent) {
+    override func send(event: FollowerListContract.Event) {
         switch event {
             case .OnFavoriteItemClicked(username: let username):
                 handleOnFavoriteItemClicked(username: username)
@@ -30,8 +41,11 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
             case .OnLoadMoreItems:
                 onLoadMoreItems()
             case .SendResultAndNavigateBack:
-                RouteCallbackRegistry.shared.trigger(id: callbackId, result: FollowerListResult(followerId: username, resultType: FollowerListResult.ResultType.UPDATE))
-                navigator.goBack()
+                RouteCallbackRegistry.shared.trigger(
+                    id: callbackId,
+                    result: FollowerListResult(followerId: username, resultType: FollowerListResult.ResultType.UPDATE)
+                )
+                appNavigator?.pop()
         }
     }
 
@@ -54,26 +68,23 @@ class FollowerListViewModel: BaseViewModel<FollowerListEvent, FollowerListState,
             }
         }
 
-        navigator.navigateTo(AppRoute.followerList(username: username, callbackId: callbackId))
+        appNavigator?.navigateTo(.gitHub(GitHubAppRoute.profileFollowerList(profileId: username, callbackId: callbackId)))
     }
 
     private func refreshData(page: Int = 1) {
         state.isLoading = true
-        NetworkManager.shared.getFollowers(for: username, page: page) { result in
+        networkManager?.getFollowers(for: username, page: page) { result in
             print("Result for \(self.state.username): \n \(result)")
             switch result {
                 case .success(let followers):
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.state.isLoading = false
-                        self.state.followerList.append(contentsOf: followers)
-                    }
+                    self.state.isLoading = false
+                    self.state.followerList.append(contentsOf: followers)
+
                 case .failure(let error):
                     print(error)
-                    DispatchQueue.main.async {
-                        self.state.isLoading = false
-                        self.state.showSnackbar = true
-                        self.state.errorMessage = error.localizedDescription
-                    }
+                    self.state.isLoading = false
+                    self.state.showSnackbar = true
+                    self.state.errorMessage = error.localizedDescription
             }
         }
     }

@@ -7,12 +7,12 @@
 
 import UIKit
 
-public class NetworkManager {
+public class NetworkManager: NetworkManagerProtocol {
     public nonisolated(unsafe) static let shared = NetworkManager()
     private let baseUrl = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>()
     let pageSize = 30
-    private init() {}
+    public init() {}
 
     public func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GHError>) -> ()) {
         let endpoint = baseUrl + "\(username)/followers?perpage=\(pageSize)&page=\(page)"
@@ -41,15 +41,19 @@ public class NetworkManager {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
                 let followers = try decoder.decode([Follower].self, from: data)
-                completed(Result.success(followers))
+                DispatchQueue.main.async {
+                    completed(Result.success(followers))
+                }
             } catch {
-                completed(Result.failure(.invalidData))
+                DispatchQueue.main.async {
+                    completed(Result.failure(.invalidData))
+                }
             }
         }
         task.resume()
     }
 
-    func getUserInfo(for username: String, completed: @escaping (Result<User, GHError>) -> ()) {
+    public func getUserInfo(for username: String, completed: @escaping (Result<User, GHError>) -> ()) {
         let endpoint = baseUrl + "\(username)"
         guard let url = URL(string: endpoint) else {
             completed(Result.failure(.invalidUserName))

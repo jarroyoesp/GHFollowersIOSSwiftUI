@@ -15,6 +15,11 @@
 		0485CF312D7B0B4B0003F74F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485CF302D7B0B4B0003F74F /* WidgetKit.framework */; };
 		0485CF332D7B0B4B0003F74F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485CF322D7B0B4B0003F74F /* SwiftUI.framework */; };
 		0485CF442D7B0B4C0003F74F /* Github WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1BC26B6C2EC75B5A00D5DDCA /* NavigationModule in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC26B6B2EC75B5A00D5DDCA /* NavigationModule */; };
+		1BC26B6F2EC76F2300D5DDCA /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC26B6E2EC76F2300D5DDCA /* Swinject */; };
+		1BC26B792EC7793000D5DDCA /* FeatureGitHub in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC26B782EC7793000D5DDCA /* FeatureGitHub */; };
+		1BDC38652ECB754800C3EBEF /* FeatureUserSettings in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDC38642ECB754800C3EBEF /* FeatureUserSettings */; };
+		1BDC39DF2ECC844500C3EBEF /* FeatureLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1BDC39DE2ECC844500C3EBEF /* FeatureLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,8 +126,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC26B792EC7793000D5DDCA /* FeatureGitHub in Frameworks */,
 				046AD8A52D7B47EA001EBCE8 /* DesignModule in Frameworks */,
 				046AD8A02D7B4369001EBCE8 /* NetworkModule in Frameworks */,
+				1BC26B6C2EC75B5A00D5DDCA /* NavigationModule in Frameworks */,
+				1BC26B6F2EC76F2300D5DDCA /* Swinject in Frameworks */,
+				1BDC38652ECB754800C3EBEF /* FeatureUserSettings in Frameworks */,
+				1BDC39DF2ECC844500C3EBEF /* FeatureLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +247,11 @@
 			packageProductDependencies = (
 				046AD89F2D7B4369001EBCE8 /* NetworkModule */,
 				046AD8A42D7B47EA001EBCE8 /* DesignModule */,
+				1BC26B6B2EC75B5A00D5DDCA /* NavigationModule */,
+				1BC26B6E2EC76F2300D5DDCA /* Swinject */,
+				1BC26B782EC7793000D5DDCA /* FeatureGitHub */,
+				1BDC38642ECB754800C3EBEF /* FeatureUserSettings */,
+				1BDC39DE2ECC844500C3EBEF /* FeatureLogin */,
 			);
 			productName = GHFollowersSwiftUI;
 			productReference = 04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */;
@@ -398,6 +413,11 @@
 			packageReferences = (
 				04204D022D7B40EF0016A8B5 /* XCLocalSwiftPackageReference "NetworkModule" */,
 				046AD8A32D7B47DD001EBCE8 /* XCLocalSwiftPackageReference "DesignModule" */,
+				1BC26B6A2EC75B5A00D5DDCA /* XCLocalSwiftPackageReference "NavigationModule" */,
+				1BC26B6D2EC76F2300D5DDCA /* XCRemoteSwiftPackageReference "Swinject" */,
+				1BC26B772EC7793000D5DDCA /* XCLocalSwiftPackageReference "FeatureGitHub" */,
+				1BDC38632ECB754800C3EBEF /* XCLocalSwiftPackageReference "FeatureUserSettings" */,
+				1BDC39DD2ECC844500C3EBEF /* XCLocalSwiftPackageReference "FeatureLogin" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 04029CAD2D65F11D00A04BCA /* Products */;
@@ -1019,7 +1039,34 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = DesignModule;
 		};
+		1BC26B6A2EC75B5A00D5DDCA /* XCLocalSwiftPackageReference "NavigationModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = NavigationModule;
+		};
+		1BC26B772EC7793000D5DDCA /* XCLocalSwiftPackageReference "FeatureGitHub" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = FeatureGitHub;
+		};
+		1BDC38632ECB754800C3EBEF /* XCLocalSwiftPackageReference "FeatureUserSettings" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = FeatureUserSettings;
+		};
+		1BDC39DD2ECC844500C3EBEF /* XCLocalSwiftPackageReference "FeatureLogin" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = FeatureLogin;
+		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1BC26B6D2EC76F2300D5DDCA /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		046AD89F2D7B4369001EBCE8 /* NetworkModule */ = {
@@ -1041,6 +1088,27 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 046AD8A32D7B47DD001EBCE8 /* XCLocalSwiftPackageReference "DesignModule" */;
 			productName = DesignModule;
+		};
+		1BC26B6B2EC75B5A00D5DDCA /* NavigationModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NavigationModule;
+		};
+		1BC26B6E2EC76F2300D5DDCA /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BC26B6D2EC76F2300D5DDCA /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		1BC26B782EC7793000D5DDCA /* FeatureGitHub */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureGitHub;
+		};
+		1BDC38642ECB754800C3EBEF /* FeatureUserSettings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureUserSettings;
+		};
+		1BDC39DE2ECC844500C3EBEF /* FeatureLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
