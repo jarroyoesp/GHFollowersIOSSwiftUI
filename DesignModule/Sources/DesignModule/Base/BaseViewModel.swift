@@ -13,11 +13,10 @@ public protocol ViewEvent {}
 public protocol ViewState {}
 public protocol ViewEffect {}
 
+@MainActor
 open class BaseViewModel<UiEvent: ViewEvent, UiState: ViewState, UiEffect: ViewEffect>: ObservableObject {
     @Published public var state: UiState
     @Published public var effect: UiEffect?
-
-    public let navigator = Navigator.shared
 
     public init(initialState: UiState) {
         state = initialState

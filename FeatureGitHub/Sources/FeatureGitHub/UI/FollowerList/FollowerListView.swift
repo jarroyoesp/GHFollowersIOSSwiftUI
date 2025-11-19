@@ -6,17 +6,22 @@
 //
 
 import DesignModule
+import NavigationModule
 import NetworkModule
 import SwiftUI
 
-struct FollowerListView: View {
+public struct FollowerListView: View {
     @StateObject private var viewModel: FollowerListViewModel
 
-    init(userName: String, callbackId: UUID) {
-        _viewModel = StateObject(wrappedValue: FollowerListViewModel(username: userName, callbackId: callbackId))
+    // init(userName: String, callbackId: UUID, appNavigator: AppNavigator?) {
+    //    _viewModel = StateObject(wrappedValue: FollowerListViewModel(username: userName, callbackId: callbackId, appNavigator: appNavigator))
+    // }
+
+    init(viewModel: FollowerListViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    var body: some View {
+    public var body: some View {
         FollowerListViewMain(
             state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) }
         )
@@ -34,8 +39,8 @@ struct FollowerListView: View {
 }
 
 private struct FollowerListViewMain: View {
-    let state: FollowerListState
-    let sendEvent: (_ event: FollowerListEvent) -> ()
+    let state: FollowerListContract.State
+    let sendEvent: (_ event: FollowerListContract.Event) -> ()
 
     private let columns = [
         GridItem(.flexible()),
@@ -55,12 +60,12 @@ private struct FollowerListViewMain: View {
                                 FollowerItem(
                                     follower: follower,
                                     isFavorite: state.favoriteFollowers[follower.login] == true,
-                                    onClick: { sendEvent(FollowerListEvent.OnItemClicked(username: follower.login)) },
-                                    onClickFavorite: { sendEvent(FollowerListEvent.OnFavoriteItemClicked(username: $0)) }
+                                    onClick: { sendEvent(.OnItemClicked(username: follower.login)) },
+                                    onClickFavorite: { sendEvent(.OnFavoriteItemClicked(username: $0)) }
                                 )
                                 .onAppear {
                                     if follower == state.followerList.last {
-                                        sendEvent(FollowerListEvent.OnLoadMoreItems)
+                                        sendEvent(.OnLoadMoreItems)
                                     }
                                 }
                             }
@@ -75,7 +80,7 @@ private struct FollowerListViewMain: View {
                 }
             }
             Button(action: {
-                sendEvent(FollowerListEvent.SendResultAndNavigateBack)
+                sendEvent(.SendResultAndNavigateBack)
             }) {
                 Text("Send Result Back")
                     .frame(maxWidth: .infinity)
@@ -112,5 +117,5 @@ private func getPlaceholderData() -> [Follower] {
 }
 
 #Preview {
-    FollowerListViewMain(state: FollowerListState(followerList: getPlaceholderData()), sendEvent: { _ in })
+    FollowerListViewMain(state: FollowerListContract.State(followerList: getPlaceholderData()), sendEvent: { _ in })
 }
