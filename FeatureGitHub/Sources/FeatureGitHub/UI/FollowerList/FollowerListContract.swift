@@ -10,26 +10,28 @@ import DesignModule
 import Foundation
 import NetworkModule
 
-class FollowerListContract {
-    struct State: ViewState {
+public class FollowerListContract {
+    public struct State: ViewState {
         var errorMessage: String = ""
         var favoriteFollowers: [String: Bool] = [:]
         var followerList: [Follower] = []
         var isLoading: Bool = false
         var showSnackbar: Bool = false
+        var userInfo: User? = nil
         var username: String = ""
         var resultMessage: String = ""
         var showResult: Bool = false
     }
 
-    enum Event: ViewEvent {
+    public enum Event: ViewEvent {
         case OnFavoriteItemClicked(username: String)
         case OnItemClicked(username: String)
         case OnLoadMoreItems
+        case onTapUserInfoButton
         case SendResultAndNavigateBack
     }
 
-    enum Effect: ViewEffect {
+    public enum Effect: ViewEffect {
         case showError(String)
     }
 }

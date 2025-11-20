@@ -6,6 +6,7 @@ import Foundation
 public enum GitHubAppRoute: Hashable {
     case profileFollowerList(profileId: String, callbackId: UUID)
     case searchProfile
+    case userInfo(profileId: String)
 }
 
 public enum LoginAppRoute: Hashable {

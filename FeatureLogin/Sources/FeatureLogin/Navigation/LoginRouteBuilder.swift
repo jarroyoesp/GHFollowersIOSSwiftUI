@@ -22,9 +22,9 @@ public struct LoginRouteBuilder {
     public func build(route: LoginAppRoute) -> some View {
         switch route {
             case .login:
-                Text("adsf")
-                // DO NOTHING - REMOVE LoginView(viewModel: LoginViewModel())
-                // DO NOTHING - REMOVE     .toolbar(.hidden, for: .tabBar)
+                LoginView(
+                    viewModel: Container.LoginContainer.resolve(LoginViewModel.self)!
+                )
         }
     }
 }

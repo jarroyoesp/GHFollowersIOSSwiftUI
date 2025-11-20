@@ -1,5 +1,5 @@
 //
-//  FollowerViewModel.swift
+//  FollowerListViewModel.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -11,28 +11,32 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-class FollowerListViewModel: BaseViewModel<FollowerListContract.Event, FollowerListContract.State, FollowerListContract.Effect> {
+public class FollowerListViewModel: BaseViewModel<FollowerListContract.Event, FollowerListContract.State, FollowerListContract.Effect> {
     private var appNavigator: AppNavigator?
     private let username: String
     private let callbackId: UUID
-    private let networkManager: NetworkManagerProtocol?
+    private let getFollowerListInteractor: GetFollowerListInteractor?
+    private let getUserInfoInteractor: GetUserInfoInteractor?
     private var page = 1
 
-    init(
+    public init(
         username: String,
         callbackId: UUID,
         appNavigator: AppNavigator?,
-        networkManager: NetworkManagerProtocol?
+        getFollowerListInteractor: GetFollowerListInteractor?,
+        getUserInfoInteractor: GetUserInfoInteractor?
+
     ) {
         self.appNavigator = appNavigator
         self.callbackId = callbackId
         self.username = username
-        self.networkManager = networkManager
+        self.getFollowerListInteractor = getFollowerListInteractor
+        self.getUserInfoInteractor = getUserInfoInteractor
         super.init(initialState: FollowerListContract.State(username: username))
         refreshData()
     }
 
-    override func send(event: FollowerListContract.Event) {
+    override public func send(event: FollowerListContract.Event) {
         switch event {
             case .OnFavoriteItemClicked(username: let username):
                 handleOnFavoriteItemClicked(username: username)
@@ -46,10 +50,12 @@ class FollowerListViewModel: BaseViewModel<FollowerListContract.Event, FollowerL
                     result: FollowerListResult(followerId: username, resultType: FollowerListResult.ResultType.UPDATE)
                 )
                 appNavigator?.pop()
+            case .onTapUserInfoButton:
+                appNavigator?.navigateTo(.gitHub(GitHubAppRoute.userInfo(profileId: username)))
         }
     }
 
-    override func onLoadingChanged(loading: Bool) {
+    override public func onLoadingChanged(loading: Bool) {
         state.isLoading = loading
     }
 
@@ -73,12 +79,27 @@ class FollowerListViewModel: BaseViewModel<FollowerListContract.Event, FollowerL
 
     private func refreshData(page: Int = 1) {
         state.isLoading = true
-        networkManager?.getFollowers(for: username, page: page) { result in
+        getFollowerListInteractor?.invoke(for: username, page: page) { result in
             print("Result for \(self.state.username): \n \(result)")
             switch result {
                 case .success(let followers):
                     self.state.isLoading = false
                     self.state.followerList.append(contentsOf: followers)
+
+                case .failure(let error):
+                    print(error)
+                    self.state.isLoading = false
+                    self.state.showSnackbar = true
+                    self.state.errorMessage = error.localizedDescription
+            }
+        }
+
+        getUserInfoInteractor?.invoke(for: username) { result in
+            print("Result for \(self.state.username): \n \(result)")
+            switch result {
+                case .success(let userInfo):
+                    self.state.isLoading = false
+                    self.state.userInfo = userInfo
 
                 case .failure(let error):
                     print(error)

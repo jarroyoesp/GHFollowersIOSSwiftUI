@@ -80,7 +80,9 @@ public class NetworkManager: NetworkManagerProtocol {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
                 let user = try decoder.decode(User.self, from: data)
-                completed(Result.success(user))
+                DispatchQueue.main.async {
+                    completed(Result.success(user))
+                }
             } catch {
                 completed(Result.failure(.invalidData))
             }

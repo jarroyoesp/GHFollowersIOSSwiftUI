@@ -12,15 +12,15 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-class SearchViewModel: BaseViewModel<SearchContract.Event, SearchContract.State, SearchContract.Effect> {
+public class SearchViewModel: BaseViewModel<SearchContract.Event, SearchContract.State, SearchContract.Effect> {
     private let appNavigator: AppNavigator?
 
-    init(appNavigator: AppNavigator?) {
+    public init(appNavigator: AppNavigator?) {
         self.appNavigator = appNavigator
         super.init(initialState: SearchContract.State())
     }
 
-    override func send(event: SearchContract.Event) {
+    override public func send(event: SearchContract.Event) {
         switch event {
             case .OnSearchButtonClicked:
                 handleOnSearchButtonClicked()

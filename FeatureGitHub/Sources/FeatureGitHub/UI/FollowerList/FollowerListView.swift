@@ -13,10 +13,6 @@ import SwiftUI
 public struct FollowerListView: View {
     @StateObject private var viewModel: FollowerListViewModel
 
-    // init(userName: String, callbackId: UUID, appNavigator: AppNavigator?) {
-    //    _viewModel = StateObject(wrappedValue: FollowerListViewModel(username: userName, callbackId: callbackId, appNavigator: appNavigator))
-    // }
-
     init(viewModel: FollowerListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -35,6 +31,17 @@ public struct FollowerListView: View {
             message: viewModel.state.resultMessage,
             bgColor: .green
         )
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ProfilePicture(
+                    imageUrl: viewModel.state.userInfo?.avatarUrl,
+                    size: Padding.p36
+                )
+                .onTapGesture {
+                    viewModel.send(event: .onTapUserInfoButton)
+                }
+            }
+        }
     }
 }
 

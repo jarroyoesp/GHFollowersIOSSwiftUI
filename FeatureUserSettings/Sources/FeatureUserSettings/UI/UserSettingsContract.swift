@@ -9,10 +9,10 @@ import Combine
 import DesignModule
 import Foundation
 
-class UserSettingsContract {
-    enum Event: ViewEvent {}
+public class UserSettingsContract {
+    public enum Event: ViewEvent {}
 
-    struct State: ViewState {}
+    public struct State: ViewState {}
 
-    enum Effect: ViewEffect {}
+    public enum Effect: ViewEffect {}
 }

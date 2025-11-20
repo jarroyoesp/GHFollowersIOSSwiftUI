@@ -8,6 +8,7 @@
 import FeatureLogin
 import NavigationModule
 import SwiftUI
+import Swinject
 
 struct RootView: View {
     @StateObject var appFlowManager: AppFlowManager
@@ -20,13 +21,11 @@ struct RootView: View {
         Group {
             switch appFlowManager.currentState {
                 case .login:
-                    LoginView(viewModel: LoginViewModel(appFlowManager: appFlowManager))
-                        .environmentObject(appFlowManager)
+                    LoginView(viewModel: Container.LoginContainer.resolve(LoginViewModel.self)!)
                         .transition(.move(edge: .bottom))
 
                 case .main:
-                    MainView(viewModel: MainViewModel(appFlowManager: appFlowManager))
-                        .environmentObject(appFlowManager)
+                    MainView(viewModel: MainViewModel())
                         .transition(.move(edge: .bottom))
             }
         }
