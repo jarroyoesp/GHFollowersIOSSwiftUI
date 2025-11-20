@@ -38,16 +38,17 @@ private struct MainViewMain: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            getSearchViewView(
-                appNavigator: appNavigatorTab1,
-                networkManager: networkManager
+            SearchView(
+                viewModel: Container.GitHubContainer.resolve(
+                    SearchViewModel.self,
+                    argument: appNavigatorTab1
+                )!
             )
             .appNavigatorViewModifier(
                 navigator: appNavigatorTab1,
                 gitHubRouteHandler: { route in
                     GitHubViews(
-                        appNavigator: appNavigatorTab1,
-                        networkManager: networkManager
+                        appNavigator: appNavigatorTab1
                     ).build(route: route)
                 },
                 loginRouteHandler: { route in
@@ -70,16 +71,17 @@ private struct MainViewMain: View {
             }
             .tag(0)
 
-            getUserSettingsView(
-                appNavigator: appNavigatorTab2,
-                networkManager: networkManager
+            UserSettingsView(
+                viewModel: Container.UserSettingsContainer.resolve(
+                    UserSettingsViewModel.self,
+                    argument: appNavigatorTab2
+                )!
             )
             .appNavigatorViewModifier(
                 navigator: appNavigatorTab2,
                 gitHubRouteHandler: { route in
                     GitHubViews(
-                        appNavigator: appNavigatorTab2,
-                        networkManager: networkManager
+                        appNavigator: appNavigatorTab2
                     ).build(route: route)
                 },
                 loginRouteHandler: { route in

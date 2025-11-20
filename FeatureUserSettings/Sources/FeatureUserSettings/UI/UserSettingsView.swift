@@ -14,7 +14,7 @@ import Swinject
 public struct UserSettingsView: View {
     @StateObject private var viewModel: UserSettingsViewModel
 
-    init(viewModel: UserSettingsViewModel) {
+    public init(viewModel: UserSettingsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 

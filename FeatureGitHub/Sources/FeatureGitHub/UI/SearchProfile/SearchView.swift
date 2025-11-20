@@ -14,7 +14,7 @@ import Swinject
 public struct SearchView: View {
     @StateObject private var viewModel: SearchViewModel
 
-    init(viewModel: SearchViewModel) {
+    public init(viewModel: SearchViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 

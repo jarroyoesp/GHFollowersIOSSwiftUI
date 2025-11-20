@@ -8,15 +8,15 @@
 import UIKit
 
 public struct User: Codable {
-    let login: String
-    let avatarUrl: String
-    let name: String?
-    let location: String?
-    let bio: String?
-    let publicRepos: Int
-    let publicGists: Int
-    let htmlUrl: String
-    let following: Int
-    let followers: Int
-    let createdAt: String
+    public let login: String
+    public let avatarUrl: String
+    public let name: String?
+    public let location: String?
+    public let bio: String?
+    public let publicRepos: Int
+    public let publicGists: Int
+    public let htmlUrl: String
+    public let following: Int
+    public let followers: Int
+    public let createdAt: String
 }

@@ -13,12 +13,7 @@ import SwiftUI
 import Swinject
 
 class MainViewModel: BaseViewModel<MainEvent, MainState, MainEffect> {
-    private let appFlowManager: AppFlowManager
-
-    init(
-        appFlowManager: AppFlowManager
-    ) {
-        self.appFlowManager = appFlowManager
+    init() {
         super.init(initialState: MainState())
     }
 

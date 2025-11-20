@@ -12,15 +12,15 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-class UserSettingsViewModel: BaseViewModel<UserSettingsContract.Event, UserSettingsContract.State, UserSettingsContract.Effect> {
+public class UserSettingsViewModel: BaseViewModel<UserSettingsContract.Event, UserSettingsContract.State, UserSettingsContract.Effect> {
     private let appNavigator: AppNavigator?
 
-    init(appNavigator: AppNavigator?) {
+    public init(appNavigator: AppNavigator?) {
         self.appNavigator = appNavigator
         super.init(initialState: UserSettingsContract.State())
     }
 
-    override func send(event: UserSettingsContract.Event) {
+    override public func send(event: UserSettingsContract.Event) {
         switch event {}
     }
 }
