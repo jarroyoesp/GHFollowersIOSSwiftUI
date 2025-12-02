@@ -10,7 +10,9 @@ import DesignModule
 import Foundation
 
 public class UserSettingsContract {
-    public enum Event: ViewEvent {}
+    public enum Event: ViewEvent {
+        case OnLogoutButtonTapped
+    }
 
     public struct State: ViewState {}
 

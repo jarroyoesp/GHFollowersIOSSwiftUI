@@ -15,7 +15,7 @@ struct GHFollowersSwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView(appFlowManager: appFlowManager)
+            RootView(viewModel: Container.AppContainer.resolve(RootViewModel.self)!)
         }
     }
 }

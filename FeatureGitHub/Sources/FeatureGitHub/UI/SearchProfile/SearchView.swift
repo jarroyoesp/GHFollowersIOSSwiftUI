@@ -54,12 +54,6 @@ private struct SearchViewMain: View {
             }
 
             Button(action: {
-                sendEvent(.OnUserSettingsButtonClicked)
-            }) {
-                Text("User settings")
-            }
-
-            Button(action: {
                 sendEvent(.OnLogoutButtonTapped)
             }) {
                 Text("LogOut")

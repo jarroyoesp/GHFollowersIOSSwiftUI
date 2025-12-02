@@ -14,9 +14,14 @@ import Swinject
 
 public class LoginViewModel: BaseViewModel<LoginContract.Event, LoginContract.State, LoginContract.Effect> {
     private let appFlowManager: AppFlowManager
+    private let loginInteractor: LoginInteractor
 
-    public init(appFlowManager: AppFlowManager) {
+    public init(
+        appFlowManager: AppFlowManager,
+        loginInteractor: LoginInteractor
+    ) {
         self.appFlowManager = appFlowManager
+        self.loginInteractor = loginInteractor
         super.init(initialState: LoginContract.State())
     }
 
@@ -30,6 +35,13 @@ public class LoginViewModel: BaseViewModel<LoginContract.Event, LoginContract.St
     }
 
     private func handleOnLoginButtonClicked() {
-        appFlowManager.currentState = .main
+        loginInteractor.invoke(for: state.username) { result in
+            switch result {
+                case .success:
+                    self.appFlowManager.loginSuccess()
+                case .failure:
+                    print("Error")
+            }
+        }
     }
 }

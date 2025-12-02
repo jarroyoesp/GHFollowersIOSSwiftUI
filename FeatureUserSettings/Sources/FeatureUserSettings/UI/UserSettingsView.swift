@@ -30,6 +30,17 @@ private struct UserSettingsViewMain: View {
     var body: some View {
         VStack {
             Text("UserSettings")
+            Button(action: {
+                sendEvent(.OnLogoutButtonTapped)
+            }) {
+                Text("LOGOUT")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+            }
         }
         .padding()
     }

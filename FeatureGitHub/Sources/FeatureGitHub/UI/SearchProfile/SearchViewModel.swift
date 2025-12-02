@@ -14,9 +14,14 @@ import Swinject
 
 public class SearchViewModel: BaseViewModel<SearchContract.Event, SearchContract.State, SearchContract.Effect> {
     private let appNavigator: AppNavigator?
+    private let appFlowManager: AppFlowManager
 
-    public init(appNavigator: AppNavigator?) {
+    public init(
+        appNavigator: AppNavigator?,
+        appFlowManager: AppFlowManager
+    ) {
         self.appNavigator = appNavigator
+        self.appFlowManager = appFlowManager
         super.init(initialState: SearchContract.State())
     }
 
@@ -26,10 +31,8 @@ public class SearchViewModel: BaseViewModel<SearchContract.Event, SearchContract
                 handleOnSearchButtonClicked()
             case .onUserNameChanged(username: let username):
                 state.username = username
-            case .OnUserSettingsButtonClicked:
-                appNavigator?.navigateTo(.user(UserAppRoute.userSettings))
             case .OnLogoutButtonTapped:
-                Container.NavigationContainer.resolve(AppFlowManager.self)?.currentState = .login
+                appFlowManager.logout()
         }
     }
 

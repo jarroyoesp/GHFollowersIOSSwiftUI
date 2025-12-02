@@ -11,13 +11,12 @@ import Swinject
 
 @MainActor
 public extension Container {
-    static let UserSettingsContainer: Container = {
+    static let AppContainer: Container = {
         let container = Container()
         container
-            .register(UserSettingsViewModel.self) { (_, appNavigator: AppNavigator, appFlowManager: AppFlowManager) in
-                UserSettingsViewModel(
-                    appNavigator: appNavigator,
-                    appFlowManager: appFlowManager
+            .register(RootViewModel.self) { _ in
+                RootViewModel(
+                    appFlowManager: Container.NavigationContainer.resolve(AppFlowManager.self)!
                 )
             }
             .inObjectScope(.transient)

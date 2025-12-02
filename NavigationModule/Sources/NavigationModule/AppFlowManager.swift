@@ -7,22 +7,20 @@
 
 import Combine
 
-// 1. Definimos un enum para los estados principales de la App
 public enum AppState {
+    case home
     case login
-    case main
+    case splash
 }
 
-// 2. El Manager que controla el estado
 public class AppFlowManager: ObservableObject {
-    @Published public var currentState: AppState = .login // O .login por defecto
+    public let currentStatus = CurrentValueSubject<AppState, Never>(.splash)
 
-    func logout() {
-        // Aquí podrías limpiar tokens, datos de usuario, etc.
-        currentState = .login
+    public func logout() {
+        currentStatus.send(.login)
     }
 
-    func loginSuccess() {
-        currentState = .main
+    public func loginSuccess() {
+        currentStatus.send(.home)
     }
 }
