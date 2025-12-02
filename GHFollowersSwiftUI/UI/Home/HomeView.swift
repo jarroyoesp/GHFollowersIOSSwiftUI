@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -14,25 +14,26 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-public struct MainView: View {
-    @StateObject private var viewModel: MainViewModel
+public struct HomeView: View {
+    @StateObject private var viewModel: HomeViewModel
 
-    init(viewModel: MainViewModel) {
+    init(viewModel: HomeViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     public var body: some View {
-        MainViewMain(state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) })
+        HomeViewMain(state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) })
     }
 }
 
-private struct MainViewMain: View {
-    let state: MainState
-    let sendEvent: (_ event: MainEvent) -> ()
+private struct HomeViewMain: View {
+    let state: HomeContract.State
+    let sendEvent: (_ event: HomeContract.Event) -> ()
 
     let appNavigatorTab1 = Container.NavigationContainer.resolve(AppNavigator.self)!
     let appNavigatorTab2 = Container.NavigationContainer.resolve(AppNavigator.self)!
     let networkManager = Container.NetworkContainer.resolve(NetworkManagerProtocol.self)!
+    let appFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
 
     @State private var selectedTab: Int = 0
 
@@ -41,7 +42,7 @@ private struct MainViewMain: View {
             SearchView(
                 viewModel: Container.GitHubContainer.resolve(
                     SearchViewModel.self,
-                    argument: appNavigatorTab1
+                    arguments: appNavigatorTab1, appFlowManager
                 )!
             )
             .appNavigatorViewModifier(
@@ -60,6 +61,7 @@ private struct MainViewMain: View {
                 },
                 userRouteHandler: { route in
                     UserViews(
+                        appFlowManager: appFlowManager,
                         appNavigator: appNavigatorTab2,
                         networkManager: networkManager
                     )
@@ -74,7 +76,7 @@ private struct MainViewMain: View {
             UserSettingsView(
                 viewModel: Container.UserSettingsContainer.resolve(
                     UserSettingsViewModel.self,
-                    argument: appNavigatorTab2
+                    arguments: appNavigatorTab2, appFlowManager
                 )!
             )
             .appNavigatorViewModifier(
@@ -93,6 +95,7 @@ private struct MainViewMain: View {
                 },
                 userRouteHandler: { route in
                     UserViews(
+                        appFlowManager: appFlowManager,
                         appNavigator: appNavigatorTab2,
                         networkManager: networkManager
                     )

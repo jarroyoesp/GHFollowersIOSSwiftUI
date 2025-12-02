@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  HomeViewModel.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -12,12 +12,12 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-class MainViewModel: BaseViewModel<MainEvent, MainState, MainEffect> {
+class HomeViewModel: BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect> {
     init() {
-        super.init(initialState: MainState())
+        super.init(initialState: HomeContract.State())
     }
 
-    override func send(event: MainEvent) {
+    override func send(event: HomeContract.Event) {
         switch event {}
     }
 }

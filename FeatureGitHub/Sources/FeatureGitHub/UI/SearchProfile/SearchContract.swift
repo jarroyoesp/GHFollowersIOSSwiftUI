@@ -21,7 +21,6 @@ public class SearchContract {
         case OnLogoutButtonTapped
         case onUserNameChanged(username: String)
         case OnSearchButtonClicked
-        case OnUserSettingsButtonClicked
     }
 
     public enum Effect: ViewEffect {
