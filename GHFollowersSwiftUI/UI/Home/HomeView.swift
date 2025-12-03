@@ -16,13 +16,22 @@ import Swinject
 
 public struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
+    private let appNavigatorTab1: AppNavigator
 
-    init(viewModel: HomeViewModel) {
+    init(
+        viewModel: HomeViewModel,
+        appNavigatorTab1: AppNavigator,
+    ) {
+        self.appNavigatorTab1 = appNavigatorTab1
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     public var body: some View {
-        HomeViewMain(state: viewModel.state, sendEvent: { viewModel.onUiEvent(event: $0) })
+        HomeViewMain(
+            state: viewModel.state,
+            sendEvent: { viewModel.onUiEvent(event: $0) },
+            appNavigatorTab1: appNavigatorTab1
+        )
     }
 }
 
@@ -30,7 +39,7 @@ private struct HomeViewMain: View {
     let state: HomeContract.State
     let sendEvent: (_ event: HomeContract.Event) -> ()
 
-    let appNavigatorTab1 = Container.NavigationContainer.resolve(AppNavigator.self)!
+    let appNavigatorTab1: AppNavigator
     let appNavigatorTab2 = Container.NavigationContainer.resolve(AppNavigator.self)!
     let networkManager = Container.NetworkContainer.resolve(NetworkManagerProtocol.self)!
     let appFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
@@ -107,6 +116,9 @@ private struct HomeViewMain: View {
             }
             .tag(1)
             .badge(3)
+        }
+        .onOpenURL { url in
+            sendEvent(.onOpenURL(url: url))
         }
     }
 }

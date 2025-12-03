@@ -10,7 +10,9 @@ import DesignModule
 import Foundation
 
 public class HomeContract {
-    enum Event: ViewEvent {}
+    enum Event: ViewEvent {
+        case onOpenURL(url: URL)
+    }
 
     struct State: ViewState {
         var isUserLoggedIn: Bool = false

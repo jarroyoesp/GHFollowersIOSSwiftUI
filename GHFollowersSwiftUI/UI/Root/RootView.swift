@@ -21,8 +21,12 @@ struct RootView: View {
         Group {
             switch viewModel.state.currrentState {
                 case .home:
-                    HomeView(viewModel: HomeViewModel())
-                        .transition(.move(edge: .bottom))
+                    let appNavigatorTab1 = Container.NavigationContainer.resolve(AppNavigator.self)!
+                    HomeView(
+                        viewModel: HomeViewModel(appNavigatorTab1: appNavigatorTab1),
+                        appNavigatorTab1: appNavigatorTab1
+                    )
+                    .transition(.move(edge: .bottom))
                 case .login:
                     LoginView(viewModel: Container.LoginContainer.resolve(LoginViewModel.self)!)
                         .transition(.move(edge: .bottom))

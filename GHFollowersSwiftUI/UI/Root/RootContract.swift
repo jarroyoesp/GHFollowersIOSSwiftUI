@@ -11,7 +11,8 @@ import Foundation
 import NavigationModule
 
 public class RootContract {
-    public enum Event: ViewEvent {}
+    public enum Event: ViewEvent {
+    }
 
     public struct State: ViewState {
         var currrentState: AppState = .splash
