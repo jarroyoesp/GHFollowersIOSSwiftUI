@@ -85,7 +85,7 @@ private struct HomeViewMain: View {
             .onAppear {
                 print("OnAppear SearchView")
             }
-            
+
             UserSettingsView(
                 viewModel: Container.UserSettingsContainer.resolve(
                     UserSettingsViewModel.self,
@@ -123,7 +123,6 @@ private struct HomeViewMain: View {
             .onAppear {
                 print("OnAppear UserSettingsView")
             }
-            
         }
         .onOpenURL { url in
             if let destination = deepLinkManager.handle(url: url) {

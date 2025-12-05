@@ -36,18 +36,17 @@ class UserInfoViewModel: BaseViewModel<UserInfoContract.Event, UserInfoContract.
 
     private func refreshData(page _: Int = 1) {
         state.isLoading = true
-        getUserInfoInteractor?.invoke(for: username) { result in
-            print("Result for \(self.state.username): \n \(result)")
-            switch result {
-                case .success(let user):
-                    self.state.isLoading = false
-                    self.state.user = user
+        Task {
+            do {
+                let user = try await getUserInfoInteractor?.invoke(for: username)
+                self.state.isLoading = false
+                self.state.user = user
 
-                case .failure(let error):
+            } catch {
+                if let ghError = error as? GHError {
                     print(error)
                     self.state.isLoading = false
-                    // self.state.showSnackbar = true
-                    // self.state.errorMessage = error.localizedDescription
+                }
             }
         }
     }

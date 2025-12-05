@@ -7,6 +7,6 @@
 
 import NetworkModule
 
-public protocol GetFollowerListInteractor {
-    func invoke(for username: String, page: Int, completed: @escaping (Result<[Follower], GHError>) -> ())
+public protocol GetFollowerListInteractor: Sendable {
+    func invoke(for username: String, page: Int) async throws -> [Follower]
 }

@@ -5,7 +5,6 @@
 //  Created by Javier Arroyo on 3/12/25.
 //
 
-
 import SwiftUI
 
 public protocol DeepLinkHandler {

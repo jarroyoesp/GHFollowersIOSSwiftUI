@@ -7,7 +7,7 @@
 
 import NetworkModule
 
-public class GetFollowerListInteractorImpl: GetFollowerListInteractor {
+public final class GetFollowerListInteractorImpl: GetFollowerListInteractor {
     private let networkManager: NetworkManagerProtocol
 
     public init(
@@ -16,7 +16,7 @@ public class GetFollowerListInteractorImpl: GetFollowerListInteractor {
         self.networkManager = networkManager
     }
 
-    public func invoke(for username: String, page: Int, completed: @escaping (Result<[Follower], GHError>) -> ()) {
-        networkManager.getFollowers(for: username, page: page, completed: completed)
+    public func invoke(for username: String, page: Int) async throws -> [Follower] {
+        try await networkManager.getFollowers(for: username, page: page)
     }
 }
