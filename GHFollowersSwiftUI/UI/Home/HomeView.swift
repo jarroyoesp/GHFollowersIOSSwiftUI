@@ -20,7 +20,7 @@ public struct HomeView: View {
 
     init(
         viewModel: HomeViewModel,
-        appNavigatorTab1: AppNavigator,
+        appNavigatorTab1: AppNavigator
     ) {
         self.appNavigatorTab1 = appNavigatorTab1
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -43,8 +43,9 @@ private struct HomeViewMain: View {
     let appNavigatorTab2 = Container.NavigationContainer.resolve(AppNavigator.self)!
     let networkManager = Container.NetworkContainer.resolve(NetworkManagerProtocol.self)!
     let appFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
+    let deepLinkManager = Container.AppContainer.resolve(DeepLinkManager.self)!
 
-    @State private var selectedTab: Int = 0
+    @State private var selectedTab: Int = 1
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -81,7 +82,10 @@ private struct HomeViewMain: View {
                 Label("Inicio", systemImage: "house")
             }
             .tag(0)
-
+            .onAppear {
+                print("OnAppear SearchView")
+            }
+            
             UserSettingsView(
                 viewModel: Container.UserSettingsContainer.resolve(
                     UserSettingsViewModel.self,
@@ -116,9 +120,18 @@ private struct HomeViewMain: View {
             }
             .tag(1)
             .badge(3)
+            .onAppear {
+                print("OnAppear UserSettingsView")
+            }
+            
         }
         .onOpenURL { url in
-            sendEvent(.onOpenURL(url: url))
+            if let destination = deepLinkManager.handle(url: url) {
+                print("handle DeepLink: \(url)")
+                sendEvent(.onOpenURL(url: url))
+            } else {
+                print("DeepLink no soportado: \(url)")
+            }
         }
     }
 }

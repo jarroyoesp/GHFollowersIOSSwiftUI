@@ -11,7 +11,7 @@
 			<string>ghFollowersApp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ghFollowersapp</string>
+				<string>ghFollowersApp</string>
 			</array>
 		</dict>
 		<dict/>

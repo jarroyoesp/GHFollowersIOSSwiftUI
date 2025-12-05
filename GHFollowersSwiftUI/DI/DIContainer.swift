@@ -4,6 +4,7 @@
 //
 //  Created by Javier Arroyo on 14/11/25.
 //
+import FeatureGitHub
 import NavigationModule
 import NetworkModule
 import SwiftUI
@@ -20,6 +21,12 @@ public extension Container {
                 )
             }
             .inObjectScope(.transient)
+        container.register(DeepLinkManager.self) { _ in
+            let handlers: [DeepLinkHandler] = [
+                GithubDeepLinkHandler(),
+            ]
+            return DeepLinkManager(handlers: handlers)
+        }
 
         return container
     }()
