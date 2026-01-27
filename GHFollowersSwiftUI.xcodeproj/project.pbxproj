@@ -93,11 +93,21 @@
 			);
 			target = 0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */;
 		};
+		1B99EC982EE05F1C001732B0 /* Exceptions for "GHFollowersSwiftUI" folder in "GHFollowersSwiftUI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1B99EC982EE05F1C001732B0 /* Exceptions for "GHFollowersSwiftUI" folder in "GHFollowersSwiftUI" target */,
+			);
 			path = GHFollowersSwiftUI;
 			sourceTree = "<group>";
 		};
@@ -683,6 +693,7 @@
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GHFollowersSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -697,7 +708,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -713,6 +724,7 @@
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GHFollowersSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -727,7 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

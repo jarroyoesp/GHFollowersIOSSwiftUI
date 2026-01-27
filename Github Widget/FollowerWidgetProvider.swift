@@ -8,6 +8,7 @@
 import Foundation
 import NetworkModule
 import SwiftUI
+import Swinject
 import WidgetKit
 
 struct ApiResponse {
@@ -39,15 +40,14 @@ struct FollowerWidgetProvider: TimelineProvider {
     // MARK: - Request al endpoint
 
     private func fetchData(completion: @escaping ([Follower]?) -> ()) {
-        NetworkManager.shared.getFollowers(for: "jarroyoesp", page: 1) { result in
-            switch result {
-                case .success(let followers):
-                    print("Success: \(followers)")
-                    DispatchQueue.main.async {
-                        completion(followers)
-                    }
-                case .failure(let error):
-                    print(error)
+        let networkManager = Container.NetworkContainer.resolve(NetworkManagerProtocol.self)
+        Task {
+            do {
+                let followers = try await networkManager?.getFollowers(for: "jarroyoesp", page: 1)
+                completion(followers)
+
+            } catch {
+                print(error)
             }
         }
     }

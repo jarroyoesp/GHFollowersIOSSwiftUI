@@ -79,33 +79,33 @@ public class FollowerListViewModel: BaseViewModel<FollowerListContract.Event, Fo
 
     private func refreshData(page: Int = 1) {
         state.isLoading = true
-        getFollowerListInteractor?.invoke(for: username, page: page) { result in
-            print("Result for \(self.state.username): \n \(result)")
-            switch result {
-                case .success(let followers):
-                    self.state.isLoading = false
-                    self.state.followerList.append(contentsOf: followers)
+        Task {
+            do {
+                let followers = try await getFollowerListInteractor?.invoke(for: username, page: page)
+                self.state.isLoading = false
+                self.state.followerList.append(contentsOf: followers ?? [])
 
-                case .failure(let error):
+            } catch {
+                if let ghError = error as? GHError {
                     print(error)
                     self.state.isLoading = false
                     self.state.showSnackbar = true
                     self.state.errorMessage = error.localizedDescription
+                }
             }
         }
 
-        getUserInfoInteractor?.invoke(for: username) { result in
-            print("Result for \(self.state.username): \n \(result)")
-            switch result {
-                case .success(let userInfo):
-                    self.state.isLoading = false
-                    self.state.userInfo = userInfo
+        Task {
+            do {
+                let user = try await getUserInfoInteractor?.invoke(for: username)
+                self.state.isLoading = false
+                self.state.userInfo = user
 
-                case .failure(let error):
+            } catch {
+                if let ghError = error as? GHError {
                     print(error)
                     self.state.isLoading = false
-                    self.state.showSnackbar = true
-                    self.state.errorMessage = error.localizedDescription
+                }
             }
         }
     }

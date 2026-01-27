@@ -7,6 +7,6 @@
 
 import NetworkModule
 
-public protocol GetUserInfoInteractor {
-    func invoke(for username: String, completed: @escaping (Result<User, GHError>) -> ())
+public protocol GetUserInfoInteractor: Sendable {
+    func invoke(for username: String) async throws -> User
 }

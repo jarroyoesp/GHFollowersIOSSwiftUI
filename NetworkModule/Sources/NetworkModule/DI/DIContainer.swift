@@ -6,9 +6,8 @@
 //
 import Swinject
 
-@MainActor
 public extension Container {
-    static let NetworkContainer: Container = {
+    nonisolated(unsafe) static let NetworkContainer: Container = {
         let container = Container()
         container.register(NetworkManagerProtocol.self) { _ in NetworkManager() }
         return container

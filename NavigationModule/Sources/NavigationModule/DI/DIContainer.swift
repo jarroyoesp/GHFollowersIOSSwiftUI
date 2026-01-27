@@ -6,9 +6,8 @@
 //
 import Swinject
 
-@MainActor
 public extension Container {
-    static let NavigationContainer: Container = {
+    nonisolated(unsafe) static let NavigationContainer: Container = {
         let container = Container()
         container
             .register(AppNavigator.self) { _ in AppNavigator() }

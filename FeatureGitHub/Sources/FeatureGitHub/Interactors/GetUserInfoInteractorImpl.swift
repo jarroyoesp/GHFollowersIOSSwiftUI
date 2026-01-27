@@ -7,7 +7,7 @@
 
 import NetworkModule
 
-public class GetUserInfoInteractorImpl: GetUserInfoInteractor {
+public final class GetUserInfoInteractorImpl: GetUserInfoInteractor {
     private let networkManager: NetworkManagerProtocol
 
     public init(
@@ -16,7 +16,7 @@ public class GetUserInfoInteractorImpl: GetUserInfoInteractor {
         self.networkManager = networkManager
     }
 
-    public func invoke(for username: String, completed: @escaping (Result<User, GHError>) -> ()) {
-        networkManager.getUserInfo(for: username, completed: completed)
+    public func invoke(for username: String) async throws -> User {
+        try await networkManager.getUserInfo(for: username)
     }
 }
