@@ -5,32 +5,33 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-@MainActor
-public struct GitHubViews {
-    private let appNavigator: AppNavigator
+struct GitHubRouterView: View {
+    private let route: GitHubAppRoute
+    private let navigator: AppNavigator
 
-    public init(
-        appNavigator: AppNavigator
+    init(
+        route: GitHubAppRoute,
+        navigator: AppNavigator
     ) {
-        self.appNavigator = appNavigator
+        self.route = route
+        self.navigator = navigator
     }
 
-    @ViewBuilder
-    public func build(route: GitHubAppRoute) -> some View {
+    var body: some View {
         switch route {
             case .profileFollowerList(let profileId, let callbackId):
                 FollowerListView(
                     viewModel: Container.GitHubContainer.resolve(
                         FollowerListViewModel.self,
-                        arguments: profileId, callbackId, appNavigator
+                        arguments: profileId, callbackId, navigator
                     )!
                 )
 
             case .searchProfile:
-                SearchView(
+                GitHubSearchView(
                     viewModel: Container.GitHubContainer.resolve(
-                        SearchViewModel.self,
-                        argument: appNavigator
+                        GitHubSearchViewModel.self,
+                        argument: navigator
                     )!
                 )
 
@@ -38,7 +39,7 @@ public struct GitHubViews {
                 UserInfoView(
                     viewModel: Container.GitHubContainer.resolve(
                         UserInfoViewModel.self,
-                        arguments: profileId, appNavigator
+                        arguments: profileId, navigator
                     )!
                 )
                 .toolbar(.hidden, for: .tabBar)

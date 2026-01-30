@@ -1,5 +1,5 @@
 //
-//  SearchView.swift
+//  GitHubSearchView.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -11,10 +11,10 @@ import NavigationModule
 import SwiftUI
 import Swinject
 
-public struct SearchView: View {
-    @StateObject private var viewModel: SearchViewModel
+public struct GitHubSearchView: View {
+    @StateObject private var viewModel: GitHubSearchViewModel
 
-    public init(viewModel: SearchViewModel) {
+    public init(viewModel: GitHubSearchViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -29,8 +29,8 @@ public struct SearchView: View {
 }
 
 private struct SearchViewMain: View {
-    let state: SearchContract.State
-    let sendEvent: (_ event: SearchContract.Event) -> ()
+    let state: GitHubSearchContract.State
+    let sendEvent: (_ event: GitHubSearchContract.Event) -> ()
 
     var body: some View {
         VStack {
@@ -65,6 +65,6 @@ private struct SearchViewMain: View {
 
 #Preview {
     SearchViewMain(
-        state: SearchContract.State(username: "user"), sendEvent: { _ in }
+        state: GitHubSearchContract.State(username: "user"), sendEvent: { _ in }
     )
 }

@@ -1,26 +1,15 @@
 import SwiftUI
 
-public struct AppNavigatorViewModifier<
-    GitHubRouteHandler: View,
-    LoginRouteHandler: View,
-    UserRotueHandler: View
->: ViewModifier {
+public struct AppNavigatorViewModifier: ViewModifier {
     @StateObject private var navigator: AppNavigator
-
-    private let gitHubRouteHandler: (GitHubAppRoute) -> GitHubRouteHandler
-    private let loginRouteHandler: (LoginAppRoute) -> LoginRouteHandler
-    private let userRouteHandler: (UserAppRoute) -> UserRotueHandler
+    private var appFlowManager: AppFlowManager
 
     public init(
         navigator: AppNavigator,
-        @ViewBuilder gitHubRouteHandler: @escaping (GitHubAppRoute) -> GitHubRouteHandler,
-        @ViewBuilder loginRouteHandler: @escaping (LoginAppRoute) -> LoginRouteHandler,
-        @ViewBuilder userRouteHandler: @escaping (UserAppRoute) -> UserRotueHandler
+        appFlowManager: AppFlowManager
     ) {
         _navigator = StateObject(wrappedValue: navigator)
-        self.gitHubRouteHandler = gitHubRouteHandler
-        self.loginRouteHandler = loginRouteHandler
-        self.userRouteHandler = userRouteHandler
+        self.appFlowManager = appFlowManager
     }
 
     public func body(content: Content) -> some View {
@@ -28,36 +17,21 @@ public struct AppNavigatorViewModifier<
             content
                 .environmentObject(navigator)
                 .navigationDestination(for: AppRoute.self) { route in
-                    switch route {
-                        case .gitHub(let gitHubAppRoute):
-                            gitHubRouteHandler(gitHubAppRoute)
-                        case .login(let loginAppRoute):
-                            loginRouteHandler(loginAppRoute)
-                        case .user(let userRoute):
-                            userRouteHandler(userRoute)
-                    }
+                    Router.shared.view(for: route, navigator: navigator, appFlowManager: appFlowManager)
                 }
         }
     }
 }
 
 public extension View {
-    func appNavigatorViewModifier<
-        GitHubRouteHandler: View,
-        LoginRouteHandler: View,
-        UserRouteHandler: View
-    >(
+    func appNavigatorViewModifier(
         navigator: AppNavigator,
-        @ViewBuilder gitHubRouteHandler: @escaping (GitHubAppRoute) -> GitHubRouteHandler,
-        @ViewBuilder loginRouteHandler: @escaping (LoginAppRoute) -> LoginRouteHandler,
-        @ViewBuilder userRouteHandler: @escaping (UserAppRoute) -> UserRouteHandler
+        appFlowManager: AppFlowManager
     ) -> some View {
         modifier(
             AppNavigatorViewModifier(
                 navigator: navigator,
-                gitHubRouteHandler: gitHubRouteHandler,
-                loginRouteHandler: loginRouteHandler,
-                userRouteHandler: userRouteHandler
+                appFlowManager: appFlowManager
             )
         )
     }

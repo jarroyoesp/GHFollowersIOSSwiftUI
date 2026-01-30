@@ -16,13 +16,16 @@ import Swinject
 
 public struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
-    private let appNavigatorTab1: AppNavigator
+
+    private let githubNavigator = Container.NavigationContainer.resolve(AppNavigator.self)!
+    private let userSettingsNavigator = Container.NavigationContainer.resolve(AppNavigator.self)!
+    private let appFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
+    private let deepLinkManager = Container.AppContainer.resolve(DeepLinkManager.self)!
 
     init(
-        viewModel: HomeViewModel,
-        appNavigatorTab1: AppNavigator
+        viewModel: HomeViewModel
     ) {
-        self.appNavigatorTab1 = appNavigatorTab1
+        print("JAE HomeView")
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -30,7 +33,10 @@ public struct HomeView: View {
         HomeViewMain(
             state: viewModel.state,
             sendEvent: { viewModel.onUiEvent(event: $0) },
-            appNavigatorTab1: appNavigatorTab1
+            githubNavigator: githubNavigator,
+            userSettingsNavigator: userSettingsNavigator,
+            appFlowManager: appFlowManager,
+            deepLinkManager: deepLinkManager
         )
     }
 }
@@ -38,99 +44,84 @@ public struct HomeView: View {
 private struct HomeViewMain: View {
     let state: HomeContract.State
     let sendEvent: (_ event: HomeContract.Event) -> ()
-
-    let appNavigatorTab1: AppNavigator
-    let appNavigatorTab2 = Container.NavigationContainer.resolve(AppNavigator.self)!
-    let networkManager = Container.NetworkContainer.resolve(NetworkManagerProtocol.self)!
-    let appFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
-    let deepLinkManager = Container.AppContainer.resolve(DeepLinkManager.self)!
-
-    @State private var selectedTab: Int = 1
+    let githubNavigator: AppNavigator
+    let userSettingsNavigator: AppNavigator
+    let appFlowManager: AppFlowManager
+    let deepLinkManager: DeepLinkManager
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            SearchView(
-                viewModel: Container.GitHubContainer.resolve(
-                    SearchViewModel.self,
-                    arguments: appNavigatorTab1, appFlowManager
-                )!
-            )
-            .appNavigatorViewModifier(
-                navigator: appNavigatorTab1,
-                gitHubRouteHandler: { route in
-                    GitHubViews(
-                        appNavigator: appNavigatorTab1
-                    ).build(route: route)
-                },
-                loginRouteHandler: { route in
-                    LoginRouteBuilder(
-                        appNavigator: appNavigatorTab1,
-                        networkManager: networkManager
-                    )
-                    .build(route: route)
-                },
-                userRouteHandler: { route in
-                    UserViews(
-                        appFlowManager: appFlowManager,
-                        appNavigator: appNavigatorTab2,
-                        networkManager: networkManager
-                    )
-                    .build(route: route, navigator: appNavigatorTab1)
-                }
-            )
-            .tabItem {
-                Label("Inicio", systemImage: "house")
+        TabView(selection: Binding(
+            get: {
+                state.selectedTab
+            },
+            set: {
+                sendEvent(.onSelectedTabChanged(tab: $0))
             }
-            .tag(0)
-            .onAppear {
-                print("OnAppear SearchView")
-            }
-
-            UserSettingsView(
-                viewModel: Container.UserSettingsContainer.resolve(
-                    UserSettingsViewModel.self,
-                    arguments: appNavigatorTab2, appFlowManager
-                )!
+        )) {
+            Tab1GitHubView(
+                githubNavigator: githubNavigator,
+                appFlowManager: appFlowManager
             )
-            .appNavigatorViewModifier(
-                navigator: appNavigatorTab2,
-                gitHubRouteHandler: { route in
-                    GitHubViews(
-                        appNavigator: appNavigatorTab2
-                    ).build(route: route)
-                },
-                loginRouteHandler: { route in
-                    LoginRouteBuilder(
-                        appNavigator: appNavigatorTab2,
-                        networkManager: networkManager
-                    )
-                    .build(route: route)
-                },
-                userRouteHandler: { route in
-                    UserViews(
-                        appFlowManager: appFlowManager,
-                        appNavigator: appNavigatorTab2,
-                        networkManager: networkManager
-                    )
-                    .build(route: route, navigator: appNavigatorTab2)
-                }
+            Tab2UserSettingsView(
+                userSettingsNavigator: userSettingsNavigator,
+                appFlowManager: appFlowManager
             )
-            .tabItem {
-                Label("Ajustes", systemImage: "gear")
-            }
-            .tag(1)
-            .badge(3)
-            .onAppear {
-                print("OnAppear UserSettingsView")
-            }
         }
         .onOpenURL { url in
             if let destination = deepLinkManager.handle(url: url) {
-                print("handle DeepLink: \(url)")
-                sendEvent(.onOpenURL(url: url))
+                print("handle DeepLink: \(url)-\(destination)")
+                sendEvent(.onOpenURL(
+                    url: url,
+                    gitHubNavigator: githubNavigator,
+                    userSettingsNavigator: userSettingsNavigator
+                ))
             } else {
                 print("DeepLink no soportado: \(url)")
             }
         }
     }
+}
+
+@MainActor
+@ViewBuilder
+private func Tab1GitHubView(
+    githubNavigator: AppNavigator,
+    appFlowManager: AppFlowManager
+) -> some View {
+    GitHubSearchView(
+        viewModel: Container.GitHubContainer.resolve(
+            GitHubSearchViewModel.self,
+            arguments: githubNavigator, appFlowManager
+        )!
+    )
+    .appNavigatorViewModifier(
+        navigator: githubNavigator,
+        appFlowManager: appFlowManager
+    )
+    .tabItem {
+        Label(HomeTab.tab1GitHub.title, systemImage: HomeTab.tab1GitHub.systemImage)
+    }
+    .tag(HomeTab.tab1GitHub)
+}
+
+@MainActor
+@ViewBuilder
+private func Tab2UserSettingsView(
+    userSettingsNavigator: AppNavigator,
+    appFlowManager: AppFlowManager
+) -> some View {
+    UserSettingsView(
+        viewModel: Container.UserSettingsContainer.resolve(
+            UserSettingsViewModel.self,
+            arguments: userSettingsNavigator, appFlowManager
+        )!
+    )
+    .appNavigatorViewModifier(
+        navigator: userSettingsNavigator,
+        appFlowManager: appFlowManager
+    )
+    .tabItem {
+        Label(HomeTab.tab2UserSettings.title, systemImage: HomeTab.tab2UserSettings.systemImage)
+    }
+    .tag(HomeTab.tab2UserSettings)
 }

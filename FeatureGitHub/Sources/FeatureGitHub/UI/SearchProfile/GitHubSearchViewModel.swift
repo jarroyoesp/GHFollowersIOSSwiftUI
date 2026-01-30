@@ -1,5 +1,5 @@
 //
-//  SearchViewModel.swift
+//  GitHubSearchViewModel.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -12,7 +12,7 @@ import NetworkModule
 import SwiftUI
 import Swinject
 
-public class SearchViewModel: BaseViewModel<SearchContract.Event, SearchContract.State, SearchContract.Effect> {
+public class GitHubSearchViewModel: BaseViewModel<GitHubSearchContract.Event, GitHubSearchContract.State, GitHubSearchContract.Effect> {
     private let appNavigator: AppNavigator?
     private let appFlowManager: AppFlowManager
 
@@ -22,10 +22,10 @@ public class SearchViewModel: BaseViewModel<SearchContract.Event, SearchContract
     ) {
         self.appNavigator = appNavigator
         self.appFlowManager = appFlowManager
-        super.init(initialState: SearchContract.State())
+        super.init(initialState: GitHubSearchContract.State())
     }
 
-    override public func send(event: SearchContract.Event) {
+    override public func send(event: GitHubSearchContract.Event) {
         switch event {
             case .OnSearchButtonClicked:
                 handleOnSearchButtonClicked()
