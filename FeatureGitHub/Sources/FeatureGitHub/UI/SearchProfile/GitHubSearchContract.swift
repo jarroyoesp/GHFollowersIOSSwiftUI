@@ -1,5 +1,5 @@
 //
-//  SearchContract.swift
+//  GitHubSearchContract.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -9,7 +9,7 @@ import Combine
 import DesignModule
 import Foundation
 
-public class SearchContract {
+public class GitHubSearchContract {
     public struct State: ViewState {
         var isLoading: Bool = false
         var username: String = ""

@@ -51,8 +51,8 @@ public extension Container {
             .inObjectScope(.transient)
 
         container
-            .register(SearchViewModel.self) { (_, appNavigator: AppNavigator, appFlowManager: AppFlowManager) in
-                SearchViewModel(
+            .register(GitHubSearchViewModel.self) { (_, appNavigator: AppNavigator, appFlowManager: AppFlowManager) in
+                GitHubSearchViewModel(
                     appNavigator: appNavigator,
                     appFlowManager: appFlowManager
                 )

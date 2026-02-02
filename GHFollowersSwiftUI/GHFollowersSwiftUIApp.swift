@@ -5,6 +5,9 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
+import FeatureGitHub
+import FeatureLogin
+import FeatureUserSettings
 import NavigationModule
 import SwiftUI
 import Swinject
@@ -16,6 +19,11 @@ struct GHFollowersSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(viewModel: Container.AppContainer.resolve(RootViewModel.self)!)
+                .onAppear {
+                    GitHubModule.registerRoutes()
+                    LoginModule.registerRoutes()
+                    UserModule.registerRoutes()
+                }
         }
     }
 }
