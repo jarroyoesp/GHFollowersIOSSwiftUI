@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "DesignModule",
     platforms: [
-        .iOS(.v16), // Cambia a .v17 si solo quieres iOS 17+
+        .iOS(.v16),
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.

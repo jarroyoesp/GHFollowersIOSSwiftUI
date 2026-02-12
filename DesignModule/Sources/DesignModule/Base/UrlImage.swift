@@ -1,6 +1,6 @@
 //
 //  SnackbarModifier.swift
-//  GHFollowersSwiftUI
+//  MVISwiftUI
 //
 //  Created by Javier Arroyo on 3/3/25.
 //

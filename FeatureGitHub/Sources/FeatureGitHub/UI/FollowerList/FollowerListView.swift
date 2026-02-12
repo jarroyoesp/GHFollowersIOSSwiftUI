@@ -1,6 +1,6 @@
 //
 //  FollowerListView.swift
-//  GHFollowersSwiftUI
+//  MVISwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
 //
@@ -101,7 +101,6 @@ private struct FollowerListViewMain: View {
     }
 }
 
-@ViewBuilder
 private func initialLoadingPlaceholder() -> some SwiftUI.View {
     ForEach(0 ..< 20, id: \.self) { _ in
         FollowerItem(
