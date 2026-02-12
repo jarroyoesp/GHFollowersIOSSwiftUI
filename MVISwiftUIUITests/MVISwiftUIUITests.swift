@@ -1,13 +1,13 @@
 //
-//  GHFollowersSwiftUIUITests.swift
-//  GHFollowersSwiftUIUITests
+//  MVISwiftUIUITests.swift
+//  MVISwiftUIUITests
 //
 //  Created by Javier Arroyo on 19/2/25.
 //
 
 import XCTest
 
-final class GHFollowersSwiftUIUITests: XCTestCase {
+final class MVISwiftUIUITests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 

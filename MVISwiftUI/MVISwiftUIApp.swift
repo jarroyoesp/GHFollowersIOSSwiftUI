@@ -1,5 +1,5 @@
 //
-//  GHFollowersSwiftUIApp.swift
+//  MVISwiftUIApp.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
@@ -13,7 +13,7 @@ import SwiftUI
 import Swinject
 
 @main
-struct GHFollowersSwiftUIApp: App {
+struct MVISwiftUIApp: App {
     let appFlowManager: AppFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
 
     var body: some Scene {

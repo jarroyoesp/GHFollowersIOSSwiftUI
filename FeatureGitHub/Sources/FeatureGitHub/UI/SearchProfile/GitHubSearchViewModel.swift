@@ -1,6 +1,6 @@
 //
 //  GitHubSearchViewModel.swift
-//  GHFollowersSwiftUI
+//  MVISwiftUI
 //
 //  Created by Javier Arroyo on 19/2/25.
 //

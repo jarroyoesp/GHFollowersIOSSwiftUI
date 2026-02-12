@@ -1,13 +1,13 @@
 //
-//  GHFollowersSwiftUIUITestsLaunchTests.swift
-//  GHFollowersSwiftUIUITests
+//  MVISwiftUIUITestsLaunchTests.swift
+//  MVISwiftUIUITests
 //
 //  Created by Javier Arroyo on 19/2/25.
 //
 
 import XCTest
 
-final class GHFollowersSwiftUIUITestsLaunchTests: XCTestCase {
+final class MVISwiftUIUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

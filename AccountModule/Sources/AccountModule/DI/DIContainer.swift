@@ -1,6 +1,6 @@
 //
 //  DIContainer.swift
-//  GHFollowersSwiftUI
+//  MVISwiftUI
 //
 //  Created by Javier Arroyo on 14/11/25.
 //

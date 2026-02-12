@@ -11,11 +11,6 @@ import SwiftUI
 import Swinject
 
 struct SplashView: View {
-//    @StateObject var appFlowManager: AppFlowManager
-//
-//    init(appFlowManager: AppFlowManager) {
-//        _appFlowManager = StateObject(wrappedValue: appFlowManager)
-//    }
     @StateObject private var viewModel: SplashViewModel
 
     init(viewModel: SplashViewModel) {
@@ -23,6 +18,6 @@ struct SplashView: View {
     }
 
     var body: some View {
-        Text("GHFollowers!")
+        Text("MVI SwiftUI!")
     }
 }

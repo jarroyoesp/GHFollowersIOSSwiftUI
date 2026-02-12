@@ -76,9 +76,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowersSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04029CBC2D65F11F00A04BCA /* GHFollowersSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHFollowersSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		04029CC62D65F11F00A04BCA /* GHFollowersSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHFollowersSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04029CAC2D65F11D00A04BCA /* MVISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04029CBC2D65F11F00A04BCA /* MVISwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVISwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04029CC62D65F11F00A04BCA /* MVISwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVISwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04204CDA2D7B3D5A0016A8B5 /* NetworkModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04204CE32D7B3D5A0016A8B5 /* NetworkModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Github WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,32 +94,32 @@
 			);
 			target = 0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */;
 		};
-		1B99EC982EE05F1C001732B0 /* Exceptions for "GHFollowersSwiftUI" folder in "GHFollowersSwiftUI" target */ = {
+		1B571C302F3DF108003A5E2D /* Exceptions for "MVISwiftUI" folder in "MVISwiftUI" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
+			target = 04029CAB2D65F11D00A04BCA /* MVISwiftUI */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */ = {
+		04029CAE2D65F11D00A04BCA /* MVISwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1B99EC982EE05F1C001732B0 /* Exceptions for "GHFollowersSwiftUI" folder in "GHFollowersSwiftUI" target */,
+				1B571C302F3DF108003A5E2D /* Exceptions for "MVISwiftUI" folder in "MVISwiftUI" target */,
 			);
-			path = GHFollowersSwiftUI;
+			path = MVISwiftUI;
 			sourceTree = "<group>";
 		};
-		04029CBF2D65F11F00A04BCA /* GHFollowersSwiftUITests */ = {
+		04029CBF2D65F11F00A04BCA /* MVIUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GHFollowersSwiftUITests;
+			path = MVIUITests;
 			sourceTree = "<group>";
 		};
-		04029CC92D65F11F00A04BCA /* GHFollowersSwiftUIUITests */ = {
+		04029CC92D65F11F00A04BCA /* MVISwiftUIUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GHFollowersSwiftUIUITests;
+			path = MVISwiftUIUITests;
 			sourceTree = "<group>";
 		};
 		0485CF342D7B0B4B0003F74F /* Github Widget */ = {
@@ -194,9 +194,9 @@
 		04029CA32D65F11D00A04BCA = {
 			isa = PBXGroup;
 			children = (
-				04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */,
-				04029CBF2D65F11F00A04BCA /* GHFollowersSwiftUITests */,
-				04029CC92D65F11F00A04BCA /* GHFollowersSwiftUIUITests */,
+				04029CAE2D65F11D00A04BCA /* MVISwiftUI */,
+				04029CBF2D65F11F00A04BCA /* MVIUITests */,
+				04029CC92D65F11F00A04BCA /* MVISwiftUIUITests */,
 				0485CF342D7B0B4B0003F74F /* Github Widget */,
 				0485CF2F2D7B0B4B0003F74F /* Frameworks */,
 				04029CAD2D65F11D00A04BCA /* Products */,
@@ -206,9 +206,9 @@
 		04029CAD2D65F11D00A04BCA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */,
-				04029CBC2D65F11F00A04BCA /* GHFollowersSwiftUITests.xctest */,
-				04029CC62D65F11F00A04BCA /* GHFollowersSwiftUIUITests.xctest */,
+				04029CAC2D65F11D00A04BCA /* MVISwiftUI.app */,
+				04029CBC2D65F11F00A04BCA /* MVISwiftUITests.xctest */,
+				04029CC62D65F11F00A04BCA /* MVISwiftUIUITests.xctest */,
 				0485CF2E2D7B0B4B0003F74F /* Github WidgetExtension.appex */,
 				04204CDA2D7B3D5A0016A8B5 /* NetworkModule.framework */,
 				04204CE32D7B3D5A0016A8B5 /* NetworkModuleTests.xctest */,
@@ -238,9 +238,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */ = {
+		04029CAB2D65F11D00A04BCA /* MVISwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04029CD02D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "GHFollowersSwiftUI" */;
+			buildConfigurationList = 04029CD02D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "MVISwiftUI" */;
 			buildPhases = (
 				04029CA82D65F11D00A04BCA /* Sources */,
 				04029CA92D65F11D00A04BCA /* Frameworks */,
@@ -253,9 +253,9 @@
 				0485CF432D7B0B4C0003F74F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				04029CAE2D65F11D00A04BCA /* GHFollowersSwiftUI */,
+				04029CAE2D65F11D00A04BCA /* MVISwiftUI */,
 			);
-			name = GHFollowersSwiftUI;
+			name = MVISwiftUI;
 			packageProductDependencies = (
 				046AD89F2D7B4369001EBCE8 /* NetworkModule */,
 				046AD8A42D7B47EA001EBCE8 /* DesignModule */,
@@ -267,12 +267,12 @@
 				1B7E690D2F3242E60070494C /* AccountModule */,
 			);
 			productName = GHFollowersSwiftUI;
-			productReference = 04029CAC2D65F11D00A04BCA /* GHFollowersSwiftUI.app */;
+			productReference = 04029CAC2D65F11D00A04BCA /* MVISwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04029CBB2D65F11F00A04BCA /* GHFollowersSwiftUITests */ = {
+		04029CBB2D65F11F00A04BCA /* MVISwiftUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04029CD32D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "GHFollowersSwiftUITests" */;
+			buildConfigurationList = 04029CD32D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "MVISwiftUITests" */;
 			buildPhases = (
 				04029CB82D65F11F00A04BCA /* Sources */,
 				04029CB92D65F11F00A04BCA /* Frameworks */,
@@ -284,18 +284,18 @@
 				04029CBE2D65F11F00A04BCA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				04029CBF2D65F11F00A04BCA /* GHFollowersSwiftUITests */,
+				04029CBF2D65F11F00A04BCA /* MVIUITests */,
 			);
-			name = GHFollowersSwiftUITests;
+			name = MVISwiftUITests;
 			packageProductDependencies = (
 			);
 			productName = GHFollowersSwiftUITests;
-			productReference = 04029CBC2D65F11F00A04BCA /* GHFollowersSwiftUITests.xctest */;
+			productReference = 04029CBC2D65F11F00A04BCA /* MVISwiftUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		04029CC52D65F11F00A04BCA /* GHFollowersSwiftUIUITests */ = {
+		04029CC52D65F11F00A04BCA /* MVISwiftUIUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04029CD62D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "GHFollowersSwiftUIUITests" */;
+			buildConfigurationList = 04029CD62D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "MVISwiftUIUITests" */;
 			buildPhases = (
 				04029CC22D65F11F00A04BCA /* Sources */,
 				04029CC32D65F11F00A04BCA /* Frameworks */,
@@ -307,13 +307,13 @@
 				04029CC82D65F11F00A04BCA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				04029CC92D65F11F00A04BCA /* GHFollowersSwiftUIUITests */,
+				04029CC92D65F11F00A04BCA /* MVISwiftUIUITests */,
 			);
-			name = GHFollowersSwiftUIUITests;
+			name = MVISwiftUIUITests;
 			packageProductDependencies = (
 			);
 			productName = GHFollowersSwiftUIUITests;
-			productReference = 04029CC62D65F11F00A04BCA /* GHFollowersSwiftUIUITests.xctest */;
+			productReference = 04029CC62D65F11F00A04BCA /* MVISwiftUIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		04204CD92D7B3D5A0016A8B5 /* NetworkModule */ = {
@@ -414,7 +414,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04029CA72D65F11D00A04BCA /* Build configuration list for PBXProject "GHFollowersSwiftUI" */;
+			buildConfigurationList = 04029CA72D65F11D00A04BCA /* Build configuration list for PBXProject "MVISwiftUI" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -438,9 +438,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */,
-				04029CBB2D65F11F00A04BCA /* GHFollowersSwiftUITests */,
-				04029CC52D65F11F00A04BCA /* GHFollowersSwiftUIUITests */,
+				04029CAB2D65F11D00A04BCA /* MVISwiftUI */,
+				04029CBB2D65F11F00A04BCA /* MVISwiftUITests */,
+				04029CC52D65F11F00A04BCA /* MVISwiftUIUITests */,
 				0485CF2D2D7B0B4B0003F74F /* Github WidgetExtension */,
 				04204CD92D7B3D5A0016A8B5 /* NetworkModule */,
 				04204CE22D7B3D5A0016A8B5 /* NetworkModuleTests */,
@@ -541,12 +541,12 @@
 /* Begin PBXTargetDependency section */
 		04029CBE2D65F11F00A04BCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
+			target = 04029CAB2D65F11D00A04BCA /* MVISwiftUI */;
 			targetProxy = 04029CBD2D65F11F00A04BCA /* PBXContainerItemProxy */;
 		};
 		04029CC82D65F11F00A04BCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
+			target = 04029CAB2D65F11D00A04BCA /* MVISwiftUI */;
 			targetProxy = 04029CC72D65F11F00A04BCA /* PBXContainerItemProxy */;
 		};
 		04204CE62D7B3D5A0016A8B5 /* PBXTargetDependency */ = {
@@ -556,7 +556,7 @@
 		};
 		04204CE82D7B3D5A0016A8B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04029CAB2D65F11D00A04BCA /* GHFollowersSwiftUI */;
+			target = 04029CAB2D65F11D00A04BCA /* MVISwiftUI */;
 			targetProxy = 04204CE72D7B3D5A0016A8B5 /* PBXContainerItemProxy */;
 		};
 		0485CF432D7B0B4C0003F74F /* PBXTargetDependency */ = {
@@ -693,11 +693,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GHFollowersSwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MVISwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GHFollowersSwiftUI/Info.plist;
+				INFOPLIST_FILE = MVISwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -709,7 +709,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.MVISwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -724,11 +724,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GHFollowersSwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MVISwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GHFollowersSwiftUI/Info.plist;
+				INFOPLIST_FILE = MVISwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -740,7 +740,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.MVISwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -755,15 +755,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.MVISwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GHFollowersSwiftUI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVISwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MVISwiftUI";
 			};
 			name = Debug;
 		};
@@ -774,15 +774,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.MVISwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GHFollowersSwiftUI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVISwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MVISwiftUI";
 			};
 			name = Release;
 		};
@@ -792,9 +792,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUIUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.MVISwiftUIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -809,9 +809,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 87Z3L86QRD;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.GHFollowersSwiftUIUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarroyo.ios.MVISwiftUIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -903,7 +903,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GHFollowersSwiftUI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVISwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MVISwiftUI";
 			};
 			name = Debug;
 		};
@@ -920,7 +920,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GHFollowersSwiftUI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVISwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MVISwiftUI";
 			};
 			name = Release;
 		};
@@ -942,7 +942,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jarroyo.ios.GHFollowersSwiftUI.Github-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jarroyo.ios.MVISwiftUI.Github-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -969,7 +969,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jarroyo.ios.GHFollowersSwiftUI.Github-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jarroyo.ios.MVISwiftUI.Github-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -981,7 +981,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04029CA72D65F11D00A04BCA /* Build configuration list for PBXProject "GHFollowersSwiftUI" */ = {
+		04029CA72D65F11D00A04BCA /* Build configuration list for PBXProject "MVISwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04029CCE2D65F11F00A04BCA /* Debug */,
@@ -990,7 +990,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04029CD02D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "GHFollowersSwiftUI" */ = {
+		04029CD02D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "MVISwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04029CD12D65F11F00A04BCA /* Debug */,
@@ -999,7 +999,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04029CD32D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "GHFollowersSwiftUITests" */ = {
+		04029CD32D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "MVISwiftUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04029CD42D65F11F00A04BCA /* Debug */,
@@ -1008,7 +1008,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04029CD62D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "GHFollowersSwiftUIUITests" */ = {
+		04029CD62D65F11F00A04BCA /* Build configuration list for PBXNativeTarget "MVISwiftUIUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04029CD72D65F11F00A04BCA /* Debug */,
