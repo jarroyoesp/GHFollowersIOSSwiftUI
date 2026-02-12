@@ -6,7 +6,6 @@
 //
 
 import DesignModule
-import FeatureGitHub
 import NavigationModule
 import SwiftUI
 import Swinject

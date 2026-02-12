@@ -11,12 +11,12 @@ import SwiftUI
 class DeepLinkManager {
     private let handlers: [DeepLinkHandler]
 
-    // Inyectamos todos los handlers disponibles
+    /// Inyectamos todos los handlers disponibles
     init(handlers: [DeepLinkHandler]) {
         self.handlers = handlers
     }
 
-    // Busca el primer handler que acepte la URL
+    /// Busca el primer handler que acepte la URL
     func handle(url: URL) -> (any Hashable)? {
         for handler in handlers {
             if handler.canHandle(url: url) {

@@ -4,6 +4,7 @@
 //
 //  Created by Javier Arroyo on 14/11/25.
 //
+import AccountModule
 import FeatureGitHub
 import NavigationModule
 import NetworkModule

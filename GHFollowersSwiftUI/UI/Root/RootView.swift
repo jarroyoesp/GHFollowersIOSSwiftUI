@@ -5,6 +5,7 @@
 //  Created by Javier Arroyo on 18/11/25.
 //
 
+import AccountModule
 import FeatureLogin
 import NavigationModule
 import SwiftUI
@@ -31,6 +32,7 @@ struct RootView: View {
                 case .splash:
                     SplashView(viewModel: SplashViewModel(
                         appFlowManager: Container.NavigationContainer.resolve(AppFlowManager.self)!,
+                        getAccessTokenInteractor: Container.AccountContainer.resolve(GetAccessTokenInteractor.self)!,
                         isUserLoggedInInteractor: Container.LoginContainer.resolve(IsUserLoggedInInteractor.self)!
                     ))
             }

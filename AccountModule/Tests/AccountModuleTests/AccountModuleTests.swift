@@ -1,4 +1,4 @@
-@testable import NetworkModule
+@testable import AccountModule
 import Testing
 
 @Test func example() {

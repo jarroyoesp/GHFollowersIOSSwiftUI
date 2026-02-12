@@ -83,7 +83,6 @@ private struct HomeViewMain: View {
 }
 
 @MainActor
-@ViewBuilder
 private func Tab1GitHubView(
     githubNavigator: AppNavigator,
     appFlowManager: AppFlowManager
@@ -105,7 +104,6 @@ private func Tab1GitHubView(
 }
 
 @MainActor
-@ViewBuilder
 private func Tab2UserSettingsView(
     userSettingsNavigator: AppNavigator,
     appFlowManager: AppFlowManager

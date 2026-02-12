@@ -5,6 +5,7 @@
 //  Created by Javier Arroyo on 19/2/25.
 //
 
+import AccountModule
 import Combine
 import DesignModule
 import Foundation
@@ -22,18 +23,6 @@ class RootViewModel: BaseViewModel<RootContract.Event, RootContract.State, RootC
     ) {
         self.appFlowManager = appFlowManager
         super.init(initialState: RootContract.State())
-        checkStatus()
-    }
-
-    override func send(event: RootContract.Event) {
-        switch event {}
-    }
-
-    private func checkStatus() {
-        // DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-        //    self?.state.currrentState = .main
-        // }
-
         appFlowManager.currentStatus
             .sink { status in
                 self.state.currrentState = status
