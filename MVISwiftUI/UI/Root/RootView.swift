@@ -12,10 +12,10 @@ import SwiftUI
 import Swinject
 
 struct RootView: View {
-    @StateObject private var viewModel: RootViewModel
+    @ObservedObject private var viewModel: RootViewModel
 
     init(viewModel: RootViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        self.viewModel = viewModel
     }
 
     var body: some View {
@@ -30,11 +30,13 @@ struct RootView: View {
                     LoginView(viewModel: Container.LoginContainer.resolve(LoginViewModel.self)!)
                         .transition(.move(edge: .bottom))
                 case .splash:
-                    SplashView(viewModel: SplashViewModel(
-                        appFlowManager: Container.NavigationContainer.resolve(AppFlowManager.self)!,
-                        getAccessTokenInteractor: Container.AccountContainer.resolve(GetAccessTokenInteractor.self)!,
-                        isUserLoggedInInteractor: Container.LoginContainer.resolve(IsUserLoggedInInteractor.self)!
-                    ))
+                    SplashView(
+                        viewModel: SplashViewModel(
+                            appFlowManager: Container.NavigationContainer.resolve(AppFlowManager.self)!,
+                            getAccessTokenInteractor: Container.AccountContainer.resolve(GetAccessTokenInteractor.self)!,
+                            isUserLoggedInInteractor: Container.LoginContainer.resolve(IsUserLoggedInInteractor.self)!
+                        )
+                    )
             }
         }
     }

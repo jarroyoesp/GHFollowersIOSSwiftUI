@@ -15,18 +15,15 @@ import SwiftUI
 import Swinject
 
 public struct HomeView: View {
-    @StateObject private var viewModel: HomeViewModel
+    @ObservedObject private var viewModel: HomeViewModel
 
     private let githubNavigator = Container.NavigationContainer.resolve(AppNavigator.self)!
     private let userSettingsNavigator = Container.NavigationContainer.resolve(AppNavigator.self)!
     private let appFlowManager = Container.NavigationContainer.resolve(AppFlowManager.self)!
     private let deepLinkManager = Container.AppContainer.resolve(DeepLinkManager.self)!
 
-    init(
-        viewModel: HomeViewModel
-    ) {
-        print("JAE HomeView")
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
     }
 
     public var body: some View {

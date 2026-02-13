@@ -20,26 +20,31 @@ class HomeViewModel: BaseViewModel<HomeContract.Event, HomeContract.State, HomeC
     override func send(event: HomeContract.Event) {
         switch event {
             case .onOpenURL(url: let url, let gitHubNavigator, let userSettingsNavigator):
-                handleDeepLink(url, gitHubNavigator: gitHubNavigator, userSettingsNavigator: userSettingsNavigator)
+            handleDeepLink(url: url, gitHubNavigator: gitHubNavigator, userSettingsNavigator: userSettingsNavigator)
             case .onSelectedTabChanged(let tab):
                 state.selectedTab = tab
         }
     }
 
     private func handleDeepLink(
-        _ url: URL,
+        url: URL,
         gitHubNavigator: AppNavigator,
-        userSettingsNavigator _: AppNavigator
+        userSettingsNavigator: AppNavigator
     ) {
         guard let scheme = url.scheme, scheme == "ghFollowersApp" else { return }
         switch url.host {
             case "search":
+                // SAMPLE: ghFollowersApp://search?user=jarroyoesp
                 state.selectedTab = HomeTab.tab1GitHub
                 let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
                 if let user = components?.queryItems?.first(where: { $0.name == "user" })?.value {
                     gitHubNavigator.navigateTo(.gitHub(GitHubAppRoute.profileFollowerList(profileId: user, callbackId: UUID())))
                 }
-
+            case "userSettings":
+                // SAMPLE: ghFollowersApp://userSettings
+                state.selectedTab = HomeTab.tab2UserSettings
+                userSettingsNavigator.navigateTo(.user(.userSettings))
+            
             default:
                 print("Deep link no reconocido")
         }

@@ -11,10 +11,10 @@ import SwiftUI
 import Swinject
 
 struct SplashView: View {
-    @StateObject private var viewModel: SplashViewModel
+    @ObservedObject private var viewModel: SplashViewModel
 
     init(viewModel: SplashViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        self.viewModel = viewModel
     }
 
     var body: some View {

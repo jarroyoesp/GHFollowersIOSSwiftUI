@@ -12,10 +12,10 @@ import SwiftUI
 import Swinject
 
 public struct GitHubSearchView: View {
-    @StateObject private var viewModel: GitHubSearchViewModel
+    @ObservedObject private var viewModel: GitHubSearchViewModel
 
     public init(viewModel: GitHubSearchViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        self.viewModel = viewModel
     }
 
     public var body: some View {

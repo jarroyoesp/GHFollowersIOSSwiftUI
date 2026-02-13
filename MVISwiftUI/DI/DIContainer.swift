@@ -6,6 +6,7 @@
 //
 import AccountModule
 import FeatureGitHub
+import FeatureUserSettings
 import NavigationModule
 import NetworkModule
 import SwiftUI
@@ -25,6 +26,7 @@ public extension Container {
         container.register(DeepLinkManager.self) { _ in
             let handlers: [DeepLinkHandler] = [
                 GithubDeepLinkHandler(),
+                UserSettingsDeepLinkHandler(),
             ]
             return DeepLinkManager(handlers: handlers)
         }
